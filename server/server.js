@@ -9,8 +9,9 @@ const db = require("./db/db-connection.js");
 const app = express();
 const PORT = 8091;
 
-const apiKey = "AIzaSyAY4DAryCYIG7DBwAnlej48L6j9DqMwlng";
-const apiUrl = "https://www.googleapis.com/youtube/v3";
+const apiKey = "";
+const apiUrl = "https://www.googleapis.com/youtube/v3"
+
 const youtube = google.youtube({
   version: "v3",
   auth: apiKey,
