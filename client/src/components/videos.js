@@ -11,21 +11,21 @@ import  {useState} from 'react';
 // export default Videos;
 
 
-const UserVideos = () => {
-    const [videos, setVideos] = useState([]);
+// const UserVideos = () => {
+//     const [videos, setVideos] = useState([]);
     
-      const getVideos = async () => {
-        const response = await fetch("http://localhost:8091/api/videos");
-        const data = await response.json();
-        // console.log(data);
-        setUsers(data);
-      };
+//       const getVideos = async () => {
+//         const response = await fetch("http://localhost:8091/api/videos");
+//         const data = await response.json();
+//         // console.log(data);
+//         setUsers(data);
+//       };
     
-      useEffect(() => {
-        getVideos();
-      }, [videos]);
+//       useEffect(() => {
+//         getVideos();
+//       }, [videos]);
 
     
-}; 
+// }; 
 
-export default UserVideos; 
+// export default UserVideos; 
