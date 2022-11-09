@@ -1,10 +1,28 @@
 import { useState } from "react";
 import VideoItem from "../VideoItem";
 
-const searchButtons = ["anxiety", "depression", "imposter_syndrome"];
+
+
+const searchButtons = [
+  "Anxiety",
+  "Depression",
+  "Imposter_Syndrome",
+  "Cultural_Stigmas",
+  "Love_Languages",
+  "Improve_Communication",
+  "LGBTQIA",
+  "Family_Dynamics",
+  "Red_Flags",
+  "Work_Life_Balance",
+  "Affirmations",
+  "Overcoming_Trauma",
+  "Mindfulness",
+  "Healthy_Friendships",
+  "Mental_Health",
+];
 
 const VideosPage = () => {
-  const [currVideo, setCurrVideo] = useState("whyUPLJZljE");
+  const [video, setVideo] = useState();
   const [searchQuery, setSearchQuery] = useState("anxiety");
 
   return (
@@ -16,17 +34,6 @@ const VideosPage = () => {
               <VideoItem searchQuery={searchQuery} />
             </div>
             <i className="fas fa-layer-group"></i>
-            <div className="videocard">
-              {/* <iframe
-                src={`https://www.youtube.com/embed/${currVideo}`}
-                frameborder="0"
-                height= "350px"
-                width = "450px"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-                title="video"
-              /> */}
-            </div>
           </div>
         </div>
         <div class="main__content">
@@ -38,7 +45,11 @@ const VideosPage = () => {
           </p>
           {searchButtons.map((button, ind) => {
             return (
-              <button key={ind} onClick={() => setSearchQuery(button)}>
+              <button
+                className="topic-btn"
+                key={ind}
+                onClick={() => setSearchQuery(button)}
+              >
                 {button.replace(/[^a-zA-Z]/g, " ")}
               </button>
             );
@@ -46,6 +57,7 @@ const VideosPage = () => {
           <button class="main__btn">
             <a href="#">Read More</a>
           </button>
+         
         </div>
       </div>
     </div>
