@@ -275,9 +275,9 @@ header{
   height: 500px;
   width: 500px;
   border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  /* display: flex; */
+  /* flex-direction: column;
+  justify-content: center; */
   color: #fff;
   background-image: url("") ;
   background: #1D976C;  
