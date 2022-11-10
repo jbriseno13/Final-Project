@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from "./components/navbar";
-// import NavBarA from "./components/nav-bar";
+import Profile from "./components/profile";
 import Loading from "./components/loading";
 import { useAuth0 } from '@auth0/auth0-react';
 import { Route, Routes, Link } from 'react-router-dom';
@@ -14,16 +14,23 @@ function App() {
   if (isLoading) {
     return <Loading />;
   }
+  console.log("user", user); 
 
- 
 
   return (
+
+
     <div id="app" className="d-flex flex-column h-100">
       <header className="App-header">
         <NavBar />
         <div className="container flex-grow-1">
         </div>
       </header>
+      <div>
+        <Routes>
+        <Route path="api/me" element={<Profile user={user}/>} />
+        </Routes>
+      </div>
     </div>
   );
 }
