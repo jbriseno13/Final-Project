@@ -24,6 +24,7 @@ function App() {
       <header className="App-header">
         <NavBar />
         <div className="container flex-grow-1">
+        {!user ? <span>Hello from Tera.</span> : <span>Hi <Link to="api/me">{user.name}</Link></span> }
         </div>
       </header>
       <div>

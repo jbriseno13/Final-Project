@@ -87,6 +87,7 @@ app.get("/api/users", cors(), async (req, res) => {
 //add new user to user table when they log in: 
 
 app.post('/api/me', cors(), async (req, res) => {
+  console.log("Im in here", (req.body));
   const newUser = {
     lastname: req.body.family_name,
     firstname: req.body.given_name,
