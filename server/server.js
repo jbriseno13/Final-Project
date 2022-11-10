@@ -33,7 +33,7 @@ app.get("/search/:searchQuery", async (req, res, next) => {
     console.log(url);
 
     const response = await axios.get(url);
-    // console.log(response);
+    console.log(response);
     // const titles = response.data.items.map((item) => item.snippet.title);
 
     res.send(response.data);

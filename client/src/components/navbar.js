@@ -1,5 +1,6 @@
 import { useState } from "react";
 import VideosPage from "./navBarPrivate/videospage";
+import AuthenticationButton from "./authentication-button"
 
 function NavBar() {
   const [view, setView] = useState("home");
@@ -15,7 +16,7 @@ function NavBar() {
                 <a href="home" id="navbar__logo"></a>
                 <div className="navbar__toggle" id="mobile-menu">
                   <span className="bar"></span> <span className="bar"></span>
-                  <span calssName="bar"></span>
+                  <span className="bar"></span>
                 </div>
                 <ul className="navbar__menu">
                   <li className="navbar__item">
@@ -47,19 +48,11 @@ function NavBar() {
                       Videos
                     </a>
                   </li>
-                  {/* <li className="navbar__item">
-                      <a
-                        href="#blogs"
-                        className="navbar__links"
-                        id="blogs-page"
-                      >
-                        Blogs
-                      </a>
-                    </li> */}
+                
                   <li className="navbar__btn">
-                    <a href="#sign-in" className="button" id="signin">
-                      Sign In
-                    </a>
+                    {/* <a href="#sign-in" className="button" id="signin"> */}
+                      {<AuthenticationButton/>}
+                    {/* </a> */}
                   </li>
                 </ul>
               </div>
@@ -86,7 +79,7 @@ function NavBar() {
                 <div className="main__img--card">
                   <i className="fas fa-layer-group">
                     <div className="iframe">
-                      <iframe
+                      <iframe className="introvideo"
                         src={`https://www.youtube.com/embed/9Pp-GhbpGcg`}
                         frameborder="0"
                         height= "350px"
@@ -99,7 +92,7 @@ function NavBar() {
                   </i>
                 </div>
               </div>
-              <div class="main__content">
+              <div className="main__content">
                 <h1>Welcome to TERA!</h1>
                 <h2>Watch videos and learn more about mental health.</h2>
                 <p>
@@ -108,7 +101,7 @@ function NavBar() {
                   relationship with yourself and those around you. Break the{" "}
                   <br></br>toxic cycles in your behavior. .
                 </p>
-                <button class="main__btn">
+                <button className="main__btn">
                   <a href="#">Read More</a>
                 </button>
               </div>
@@ -125,16 +118,9 @@ function NavBar() {
                   <i className="fas fa-layer-group"></i>
                 </div>
               </div>
-              <div class="main__content">
+              <div className="main__content">
                 <h1>Contact Us!</h1>
                 <h2>Contact Information!</h2>
-                {/* <p>
-                    {" "}
-                    TERA is an application meant to help improve your <br></br> relationship with yourself and those around you. Break the <br></br>toxic cycles in your behavior.  .
-                  </p> */}
-                {/* <button class="main__btn"> */}
-                {/* <a href="#">Read More</a>
-                  </button> */}
               </div>
             </div>
           </div>
