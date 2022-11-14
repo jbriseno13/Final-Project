@@ -157,7 +157,7 @@ app.post("/favorites", async (req, res) => {
 });
 
 
-  //get request for resource
+  //get request for resource page
   app.get("/api/resources", cors(), async (req, res) => {
     try{
       const {rows:resource} = await db.query("SELECT * FROM resourcesnumbers");

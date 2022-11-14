@@ -1,0 +1,39 @@
+.resources-h1{
+    color: black;
+    font-family: 'Poppins';
+    font-size: 44px;
+    font-weight:600;
+    margin:10px 20px 30px;
+    text-align: center;
+}
+
+h2{
+    color: rgb(65,65,65);
+    font-size: 20px;
+    text-align: center;
+    
+}
+
+.reso-cards{
+    text-align: center;
+    padding: 50px;
+    margin: 20px;
+    list-style-type: none;
+    border-radius: 5px;
+    width: 500px;
+    height: 700px;
+    display: block;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(#01AEF0);
+    transition: 0.3s;
+    overflow: hidden; 
+    background-color: #FFFFFF; 
+    color:#656565;
+    font-family: "metropolis-regular", sans-serif;
+}
+
+.reso-image{
+   max-height: 400px;
+   max-width: 400px;
+}

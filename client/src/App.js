@@ -1,13 +1,15 @@
 import "./App.css";
 import NavBar from "./components/navbar";
 import Profile from "./components/profile";
+import VideosPage from "./components/navBarPrivate/videospage";
 import Resources from "./components/resourcepage";
 import Loading from "./components/loading";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Route, Routes, Link } from "react-router-dom";
 import AuthenticationButton from "./components/authentication-button";
 import LandingPage from "./components/landingpage";
-//import VideosPage from "./components/navBarPrivate/videospage";
+import PrivateNavBar from "./components/navBarPrivate/navbarprivate";
+
 // import { Routes } from 'react-router-dom';
 
 function App() {
@@ -22,9 +24,14 @@ function App() {
     <div className="landing-page-section">
       {user ? (
         <div>
-          <h1>Hello There</h1>
-          {/* <NavBar /> */}
-          {/* <LandingPage /> */}
+          <PrivateNavBar />
+          <Routes>
+           <Route path="/" element={<LandingPage/>}/>
+            <Route path="/videos" element={<VideosPage/>}/>
+            <Route path="/resources" element={<Resources/>}/>
+            <Route path="/profile" element={<Profile/>}/>
+          </Routes>
+          {/* <VideosPage/> */}
           <div>
             {/* <Routes>
               <Route path="/api/me" element={<Profile user={user} />} />
@@ -35,7 +42,7 @@ function App() {
             </Routes> */}
           </div>
         </div>
-      ): ( 
+      ) : (
         <>
           <section className="mapping-section">
             <header>
@@ -164,7 +171,7 @@ function App() {
             </header>
           </div>
         </>
-      ) }
+      )}
     </div>
   );
 }

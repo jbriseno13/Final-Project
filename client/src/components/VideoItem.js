@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import NotesSection from "./notesSection"; 
 
 const VideoItem = ({ searchQuery }) => {
   const [videos, setVideos] = useState([]);
   const [ currVid, setCurrVid ] = useState("");
 
   const getVideos = async () => {
-    const response = await fetch(`http://localhost:8091/search/${searchQuery}`);
+    const response = await fetch(`/search/${searchQuery}`);
     const videoItems = await response.json();
     setVideos(videoItems.items)
     setCurrVid(videoItems.items[0].id.videoId)
@@ -15,9 +16,13 @@ const VideoItem = ({ searchQuery }) => {
     getVideos();
   }, [searchQuery]);
 
+
+  
+
   return (
-    <div>
-      Video Test {videos?.id?.videoId}
+    
+    <div className="video-card-div">
+      {videos?.id?.videoId}
       {/* //conditional rendering */}
       {videos.length > 0 && (
         <iframe
@@ -29,9 +34,13 @@ const VideoItem = ({ searchQuery }) => {
           allowfullscreen
           title="video"
         />
+        
      
       ) }
+      
+       
       {/* iframe  goes here */}
+     
       <div className="cards_wrapper">
         {videos &&
           videos.map((video, index) => {
