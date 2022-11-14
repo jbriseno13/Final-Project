@@ -41,24 +41,13 @@ const VideoItem = ({ searchQuery }) => {
                 <div
                   onClick={() => setCurrVid(video.id.videoId)}
                   className=" video-item item"
-                >
-                  {/* <iframe
-                    src={`https://www.youtube.com/embed/${video.id.videoId}`}
-                    frameborder="0"
-                    height="350px"
-                    width="450px"
-                    allow="autoplay; encrypted-media"
-                    allowfullscreen
-                    title="video"
-                  /> */}
-
+                > 
+                  <img className='ui image' src={video.snippet.thumbnails.medium.url} alt={video.snippet.description}/>
                   <div className="ui segment">
                     <h4 className="ui header">{video.snippet.title}</h4>
                     <p>{video.snippet.description}</p>
                   </div>
                 </div>
-                {/* <div> <VideoDetail/></div> */}
-
                 <button
                   className="play-next"
                   onClick={() => setCurrVid(video.id.videoId)}
@@ -67,8 +56,6 @@ const VideoItem = ({ searchQuery }) => {
                 </button>
                 <button>Favorites</button>
               </div>
-              //onClick setCurrVid to video.id.videoId
-              //pass using an anyn function
             );
           })}
       </div>

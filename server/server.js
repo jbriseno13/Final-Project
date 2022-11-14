@@ -33,7 +33,7 @@ app.get("/search/:searchQuery", async (req, res, next) => {
     console.log(url);
 
     const response = await axios.get(url);
-    // console.log(response);
+    console.log(response);
     // const titles = response.data.items.map((item) => item.snippet.title);
 
     res.send(response.data);
@@ -83,5 +83,35 @@ app.get("/api/users", cors(), async (req, res) => {
     return res.status(400).json({ e });
   }
 });
+
+//add new user to user table when they log in: 
+
+app.post('/api/me', cors(), async (req, res) => {
+  console.log("Im in here", (req.body));
+  const newUser = {
+    lastname: req.body.family_name,
+    firstname: req.body.given_name,
+    email: req.body.email,
+    sub: req.body.sub
+
+  }
+  //console.log(newUser);
+
+  const queryEmail = 'SELECT * FROM users WHERE email=$1 LIMIT 1';
+  const valuesEmail = [newUser.email]
+  const resultsEmail = await db.query(queryEmail, valuesEmail);
+  if(resultsEmail.rows[0]){
+    console.log(`Thank you ${resultsEmail.rows[0].firstname} for comming back`)
+  } else{
+  const query = 'INSERT INTO users(lastname, firstname, email, sub) VALUES($1, $2, $3, $4) RETURNING *'
+  const values = [newUser.lastname, newUser.firstname, newUser.email, newUser.sub]
+  const result = await db.query(query, values);
+  console.log(result.rows[0]);
+
+  }
+
+});
+
+
 
 app.listen(PORT, () => console.log(`Hello. Server on port ${PORT}`));

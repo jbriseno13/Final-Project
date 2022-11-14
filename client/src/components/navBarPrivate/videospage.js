@@ -1,5 +1,6 @@
 import { useState } from "react";
 import VideoItem from "../VideoItem";
+// import PrivateNavBar from "./navbarprivate";
 
 
 
@@ -26,17 +27,19 @@ const VideosPage = () => {
   const [searchQuery, setSearchQuery] = useState("anxiety");
 
   return (
+    
     <div className="main" id="videos">
+      {/* <div><PrivateNavBar/></div> */}
       <div className="main__container">
-        <div className="main__img--container">
-          <div className="main__img--card">
+        <div className="main__video__container">
+          <div className="main__video__card">
             <div>
               <VideoItem searchQuery={searchQuery} />
             </div>
             <i className="fas fa-layer-group"></i>
           </div>
         </div>
-        <div class="main__content">
+        <div className="main__video__content">
           <h1>Search Video!</h1>
           <h2>Watch videos and learn more about mental health.</h2>
           <p>
@@ -54,7 +57,7 @@ const VideosPage = () => {
               </button>
             );
           })}
-          <button class="main__btn">
+          <button className="main__btn">
             <a href="#">Read More</a>
           </button>
          
