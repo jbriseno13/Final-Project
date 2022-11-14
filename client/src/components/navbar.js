@@ -39,7 +39,11 @@ function NavBar() {
                   </li>
 
                   <li className="navbar__item">
-                    <a onClick={()=> setView("videos")} className="navbar__links" id="home-page">
+                    <a
+                      onClick={() => setView("videos")}
+                      className="navbar__links"
+                      id="home-page"
+                    >
                       Videos
                     </a>
                   </li>
@@ -80,7 +84,19 @@ function NavBar() {
             <div className="main__container">
               <div className="main__img--container">
                 <div className="main__img--card">
-                  <i className="fas fa-layer-group"></i>
+                  <i className="fas fa-layer-group">
+                    <div className="iframe">
+                      <iframe
+                        src={`https://www.youtube.com/embed/9Pp-GhbpGcg`}
+                        frameborder="0"
+                        height= "350px"
+                        width = "450px"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen
+                        title="video"
+                      />
+                    </div>
+                  </i>
                 </div>
               </div>
               <div class="main__content">
@@ -123,31 +139,10 @@ function NavBar() {
             </div>
           </div>
 
-          <div className="main" id="videos">
-            <div className="main__container">
-              <div className="main__img--container">
-                <div className="main__img--card">
-                  <i className="fas fa-layer-group"></i>
-                </div>
-              </div>
-              <div class="main__content">
-                <h1>Search Video!</h1>
-                <h2>Watch videos and learn more about mental health.</h2>
-                <p>
-                  {" "}
-                  TERA Videos <br></br> relationship building .
-                </p>
-                <button class="main__btn" onClick={() => setView("videos")}>
-                  <a href="#">Read More</a>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <container className="top-image-cover"></container>
+          
         </section>
       )}
-      {view === "videos" && <VideosPage/>}
+      {view === "videos" && <VideosPage />}
     </>
   );
 }
