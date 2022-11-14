@@ -1,0 +1,26 @@
+.navbar-private{
+    background: #403D3D;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+  
+}
+
+.nav-link{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    text-decoration: none;
+    height: 100%;
+    transition: all 0.3s ease;
+
+}
+
+.nav-link:hover {
+    color: #56E2A7;
+    transition: all 0.3s ease;
+  }

@@ -1,66 +1,67 @@
 import { useState } from "react";
 import VideosPage from "./navBarPrivate/videospage";
-import AuthenticationButton from "./authentication-button"
+//import AuthenticationButton from "./authentication-button";
+import Resources from "./resourcepage";
 
 function NavBar() {
   const [view, setView] = useState("home");
 
-  return (
-    <>
-      {view === "home" && (
+  // return (
+    // <>
+    //   {view === "home" && (
         // NavBar Section for CSS
-        <section className="mapping-section">
-          <header>
-            <div className="navbar">
-              <div className="navbar__container">
-                <a href="home" id="navbar__logo"></a>
-                <div className="navbar__toggle" id="mobile-menu">
-                  <span className="bar"></span> <span className="bar"></span>
-                  <span className="bar"></span>
-                </div>
-                <ul className="navbar__menu">
-                  <li className="navbar__item">
-                    <a href="#home" className="navbar__links" id="home-page">
-                      Home
-                    </a>
-                  </li>
-                  <li className="navbar__item">
-                    <a href="#about" className="navbar__links" id="about-page">
-                      About
-                    </a>
-                  </li>
-                  <li className="navbar__item">
-                    <a
-                      href="#contactus"
-                      className="navbar__links"
-                      id="home-page"
-                    >
-                      Contact Us
-                    </a>
-                  </li>
+        // <section className="mapping-section">
+        //   <header>
+        //     <div className="navbar">
+        //       <div className="navbar__container">
+        //         <a href="home" id="navbar__logo"></a>
+        //         <div className="navbar__toggle" id="mobile-menu">
+        //           <span className="bar"></span> <span className="bar"></span>
+        //           <span className="bar"></span>
+        //         </div>
+        //         <ul className="navbar__menu">
+        //           <li className="navbar__item">
+        //             <a href="#home" className="navbar__links" id="home-page">
+        //               Home
+        //             </a>
+        //           </li>
+        //           <li className="navbar__item">
+        //             <a href="#about" className="navbar__links" id="about-page">
+        //               About
+        //             </a>
+        //           </li>
+        //           <li className="navbar__item">
+        //             <a
+        //               href="#contactus"
+        //               className="navbar__links"
+        //               id="home-page"
+        //             >
+        //               Contact Us
+        //             </a>
+        //           </li>
 
-                  <li className="navbar__item">
-                    <a
-                      onClick={() => setView("videos")}
-                      className="navbar__links"
-                      id="home-page"
-                    >
-                      Videos
-                    </a>
-                  </li>
-                
-                  <li className="navbar__btn">
-                    {/* <a href="#sign-in" className="button" id="signin"> */}
-                      {<AuthenticationButton/>}
+        //           <li className="navbar__item">
+        //             <a
+        //               onClick={() => setView("videos")}
+        //               className="navbar__links"
+        //               id="home-page"
+        //             >
+        //               Videos
+        //             </a>
+        //           </li>
+
+                  {/* <li className="navbar__btn"> */}
+                    // {/* <a href="#sign-in" className="button" id="signin"> */}
+                    // {<AuthenticationButton />}
                     {/* </a> */}
-                  </li>
+                  {/* </li>
                 </ul>
               </div>
             </div>
-          </header>
+          </header> */}
 
           {/* <!-- Hero Section for CSS--> */}
-          <div className="hero" id="home">
+          {/* <div className="hero" id="home">
             <div className="hero__container">
               <h1 className="hero__heading">TERA</h1>
               <p className="hero__description">
@@ -70,20 +71,21 @@ function NavBar() {
                 <a href="#">Explore</a>
               </button>
             </div>
-          </div>
+          </div> */}
 
           {/* <!-- About Section --> */}
-          <div className="main" id="about">
+          {/* <div className="main" id="about">
             <div className="main__container">
               <div className="main__img--container">
                 <div className="main__img--card">
                   <i className="fas fa-layer-group">
                     <div className="iframe">
-                      <iframe className="introvideo"
+                      <iframe
+                        className="introvideo"
                         src={`https://www.youtube.com/embed/9Pp-GhbpGcg`}
                         frameborder="0"
-                        height= "350px"
-                        width = "450px"
+                        height="350px"
+                        width="450px"
                         allow="autoplay; encrypted-media"
                         allowfullscreen
                         title="video"
@@ -108,10 +110,10 @@ function NavBar() {
             </div>
           </div>
 
-          <container className="top-image-cover"></container>
+          <container className="top-image-cover"></container> */}
 
           {/* <!-- Contact Section --> */}
-          <div className="main" id="contactus">
+          {/* <div className="main" id="contactus">
             <div className="main__container">
               <div className="main__img--container">
                 <div className="main__img--card">
@@ -124,13 +126,12 @@ function NavBar() {
               </div>
             </div>
           </div>
-
-          
         </section>
       )}
       {view === "videos" && <VideosPage />}
-    </>
-  );
+      {view === "resources" && <Resources />}
+    </> */}
+  // );
 }
 
 export default NavBar;

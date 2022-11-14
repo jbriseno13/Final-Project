@@ -1,29 +1,25 @@
-
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-
 .navbar {
-  background: #403D3D;
+  background: #403d3d;
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-  margin-top: auto;
- 
-
+  margin-top: -20px;
 }
 
 .navbar__container {
@@ -37,7 +33,7 @@ code {
 }
 
 #navbar__logo {
-  background-color:#1D976C;
+  background-color: #1d976c;
   background-size: 100%;
   display: flex;
   align-items: center;
@@ -85,13 +81,13 @@ code {
   border: none;
   outline: none;
   border-radius: 4px;
-  background: #56E2A7;
+  background: #56e2a7;
   color: #000000;
   transition: all 0.3s ease;
 }
 
 .navbar__links:hover {
-  color: #56E2A7;
+  color: #56e2a7;
   transition: all 0.3s ease;
 }
 
@@ -102,7 +98,7 @@ code {
 }
 
 .hero__container {
-  background:white;
+  background: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,29 +110,20 @@ code {
   padding: 30px;
 }
 
-.hero{
-  background:white;
+.hero {
+  background: white;
 }
 .hero__heading {
   font-size: 100px;
   margin-bottom: 24px;
-  color: #56E2A7;
+  color: #56e2a7;
 }
-
 
 .hero__description {
   font-size: 60px;
-  background: #423f43; 
-  background: -webkit-linear-gradient(
-    to right,
-    #423f43,
-    #423f43
-  ); 
-  background: linear-gradient(
-    to right,
-    #423f43,
-    #423f43
-  ); 
+  background: #423f43;
+  background: -webkit-linear-gradient(to right, #423f43, #423f43);
+  background: linear-gradient(to right, #423f43, #423f43);
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -144,23 +131,23 @@ code {
   -moz-text-fill-color: transparent;
 }
 
-body{
+body {
   color: white;
 }
 
-.App{
-  background-color: #F2F2F2;
+.App {
+  background-color: #f2f2f2;
 }
 
-header{
-  background-color: white; 
-  border-color:black;
+header {
+  background-color: white;
+  border-color: black;
   position: absolute;
-  text-align: center; 
-  top: 10px; 
-  width: 100%; 
-  display: block; 
-  box-sizing: inherit; 
+  text-align: center;
+  top: 10px;
+  width: 100%;
+  display: block;
+  box-sizing: inherit;
 }
 
 /* About Section */
@@ -189,8 +176,8 @@ header{
 
 .main__content h1 {
   font-size: 2rem;
-  background-color: #EEF2F1;
-  background-image: linear-gradient(to top, #EEF2F1 0%, #EEF2F1 100%);
+  background-color: #eef2f1;
+  background-image: linear-gradient(to top, #eef2f1 0%, #eef2f1 100%);
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -202,7 +189,7 @@ header{
 
 .main__content h2 {
   font-size: 3rem;
-  background: #EEF2F1; 
+  background: #eef2f1;
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -214,16 +201,15 @@ header{
   margin-top: 1rem;
   font-size: 1rem;
   font-weight: 700;
-  color: #EEF2F1;
+  color: #eef2f1;
 }
-
 
 /* Explore button-hero section */
 .main__btn {
   font-size: 1.8rem;
-  background:#000000;  
-  background: -webkit-linear-gradient(to right, #403D3D, #403D3D);  
-  background: linear-gradient(to right, #403D3D, #403D3D); 
+  background: #000000;
+  background: -webkit-linear-gradient(to right, #403d3d, #403d3d);
+  background: linear-gradient(to right, #403d3d, #403d3d);
   padding: 20px 60px;
   border: none;
   border-radius: 4px;
@@ -242,7 +228,7 @@ header{
 
 .main__btn:after {
   position: absolute;
-  content: '';
+  content: "";
   top: 0;
   left: 0;
   width: 0;
@@ -264,18 +250,16 @@ header{
   text-align: center;
 }
 
-
 .main__img--card {
   margin: 10px;
   height: 500px;
   width: 500px;
   border-radius: 4px;
   color: #fff;
-  background-image: url("") ;
-  background: #1D976C;  
-background: -webkit-linear-gradient(to right, #C4C4C4, #C4C4C4); 
-background: linear-gradient(to right, #C4C4C4, #C4C4C4); 
-
+  /* background-image: url("") ; */
+  background: #1d976c;
+  background: -webkit-linear-gradient(to right, #c4c4c4, #c4c4c4);
+  background: linear-gradient(to right, #c4c4c4, #c4c4c4);
 }
 
 .fa-layer-group,
@@ -284,7 +268,7 @@ background: linear-gradient(to right, #C4C4C4, #C4C4C4);
 }
 
 #video {
-  background-color: #EFEFEF;
+  background-color: #efefef;
   padding: 10rem 0;
 }
 
@@ -293,49 +277,51 @@ background: linear-gradient(to right, #C4C4C4, #C4C4C4);
   padding: 10rem 0;
 }
 
-#videocard{
+#videocard {
   width: 100%;
-  height: 358px ;
+  height: 358px;
 }
 
-iframe{
-  width:700px;
-  height:400px;
-  margin-left:25px;
-  border:0;
-  
+iframe {
+  width: 700px;
+  height: 400px;
+  margin-left: 25px;
+  border: 0;
+  padding-top: 20px;
 }
 
 /* topic button style:  */
 
-.topic-btn{
-  background-color:#f3f3f3b9;
+.topic-btn {
+  background-color: #f3f3f3b9;
   border-radius: 10px;
-  display: flex;
+  /* display: flex; */
 }
 
 /* video wrapper style:  */
 
+.video-card-div {
+  display: flex;
+}
+
 .cards_wrapper {
-  width:42%;
-  display:inline-flexbox;
-  margin-left:auto;
+  width: 42%;
+  margin-left: auto;
   max-width: 100%;
-  flex-direction: row;
-  flex-wrap:wrap;
-  background-color: #9c9999;
-  justify-content:space-evenly;
-  padding-top:20px;
+  justify-content: space-evenly;
+  padding-top: 20px;
+ 
  
 }
 
-.main__video__content{
- /* display:block; */
- /* position:relative; */
- /* margin-top: 0; */
- /* padding: 1em 1em; */
- background-color:white;
- /* flex-direction:column; */
+.main__video__content {
+  /* display:inline-block; */
+  /* position:relative; */
+  /* margin-top: 0; */
+  /* padding: 1em 1em; */
+  background-color: rgba(255, 255, 255, 0.219);
+  padding-bottom: 10px;
+  /* flex-direction:column; */
 }
 
 .video-item {
@@ -345,11 +331,27 @@ iframe{
 
 .video-item.item img {
   max-width: 300px;
-  max-height: 250px ;
+  max-height: 250px;
 }
 
-.introvideo{
-  width:450px;
+.introvideo {
+  width: 450px;
   height: 400px;
   padding-top: 40px;
+}
+
+.video-cards {
+  background: rgb(191, 187, 187);
+  width: 300px;
+  margin: auto;
+ 
+}
+
+.note-section {
+  display: flex;
+}
+
+/* landing-page */
+.landing-h1 {
+  color: black;
 }
