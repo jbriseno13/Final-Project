@@ -8,6 +8,7 @@ CREATE TABLE public.resourcesnumbers (
     phone text,
     website text,
     note text
+
 );
 
 CREATE TABLE public.users (
@@ -16,7 +17,6 @@ CREATE TABLE public.users (
     firstname text,
     email text,
     sub text,
-    id integer DEFAULT nextval('public.users_id_seq'::regclass) NOT NULL
 );
 
 
