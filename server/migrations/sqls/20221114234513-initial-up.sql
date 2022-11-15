@@ -1,149 +1,26 @@
---
--- PostgreSQL database dump
---
+/* Replace with your SQL commands */
 
--- Dumped from database version 14.5 (Homebrew)
--- Dumped by pg_dump version 14.5 (Homebrew)
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-SET default_tablespace = '';
-
-SET default_table_access_method = heap;
-
---
--- Name: favvideos; Type: TABLE; Schema: public; Owner: tpl522_2
---
-
-CREATE TABLE public.favvideos (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    video_rating text,
-    video_topic text,
-    video_id text
-);
-
-
-ALTER TABLE public.favvideos OWNER TO tpl522_2;
-
---
--- Name: resourcesnumbers; Type: TABLE; Schema: public; Owner: tpl522_2
---
 
 CREATE TABLE public.resourcesnumbers (
-    id integer NOT NULL,
+    id SERIAL PRIMARY KEY,
     image text,
     name text,
     phone text,
     website text,
     note text
+
 );
-
-
-ALTER TABLE public.resourcesnumbers OWNER TO tpl522_2;
-
---
--- Name: resourcesnumbers_id_seq; Type: SEQUENCE; Schema: public; Owner: tpl522_2
---
-
-ALTER TABLE public.resourcesnumbers ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.resourcesnumbers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: tpl522_2
---
-
-CREATE SEQUENCE public.users_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.users_id_seq OWNER TO tpl522_2;
-
---
--- Name: users; Type: TABLE; Schema: public; Owner: tpl522_2
---
 
 CREATE TABLE public.users (
+    id SERIAL PRIMARY KEY,
     lastname text,
     firstname text,
     email text,
-    sub text,
-    id integer DEFAULT nextval('public.users_id_seq'::regclass) NOT NULL
+    sub text
 );
 
 
-ALTER TABLE public.users OWNER TO tpl522_2;
 
---
--- Name: videodetails; Type: TABLE; Schema: public; Owner: tpl522_2
---
-
-CREATE TABLE public.videodetails (
-    id integer NOT NULL,
-    "channelId" text,
-    "videoId" text
-);
-
-
-ALTER TABLE public.videodetails OWNER TO tpl522_2;
-
---
--- Name: videodetails_id_seq; Type: SEQUENCE; Schema: public; Owner: tpl522_2
---
-
-ALTER TABLE public.videodetails ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.videodetails_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- Name: videos_id_seq; Type: SEQUENCE; Schema: public; Owner: tpl522_2
---
-
-ALTER TABLE public.favvideos ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.videos_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- Data for Name: favvideos; Type: TABLE DATA; Schema: public; Owner: tpl522_2
---
-
-
-
---
--- Data for Name: resourcesnumbers; Type: TABLE DATA; Schema: public; Owner: tpl522_2
---
 
 INSERT INTO public.resourcesnumbers (id, image, name, phone, website, note) OVERRIDING SYSTEM VALUE VALUES (2, 'https://adelbkorkorfoundation.org/wp-content/uploads/2021/06/ok2text-300x97.jpg', 'OK2Talk Helpline Teen Helpline', '1 (800) 273-TALK', 'https://ok2talk.org/', NULL);
 INSERT INTO public.resourcesnumbers (id, image, name, phone, website, note) OVERRIDING SYSTEM VALUE VALUES (3, 'https://adelbkorkorfoundation.org/wp-content/uploads/2022/07/988-logo-296x300.png', '988 Suicide & Crisis Lifeline', '988', 'https://988lifeline.org/chat/', NULL);
@@ -175,90 +52,5 @@ TrevorText — Text “START” to 678678. Standard text messaging rates apply. 
 INSERT INTO public.resourcesnumbers (id, image, name, phone, website, note) OVERRIDING SYSTEM VALUE VALUES (15, NULL, NULL, NULL, NULL, NULL);
 
 
---
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: tpl522_2
---
-
-INSERT INTO public.users (lastname, firstname, email, sub, id) OVERRIDING SYSTEM VALUE VALUES ('test1', '(310)123-4567', NULL, 'English', 1);
-INSERT INTO public.users (lastname, firstname, email, sub, id) OVERRIDING SYSTEM VALUE VALUES ('Briseno', 'Joslyn', 'jbriseno1013@gmail.com', 'google-oauth2|114470412835078254308', 2);
-INSERT INTO public.users (lastname, firstname, email, sub, id) OVERRIDING SYSTEM VALUE VALUES ('Briseno', 'Joslyn', 'jbriseno@ucdavis.edu', 'google-oauth2|116669293470467237585', 3);
-
-
---
--- Data for Name: videodetails; Type: TABLE DATA; Schema: public; Owner: tpl522_2
---
-
-
-
---
--- Name: resourcesnumbers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tpl522_2
---
 
 SELECT pg_catalog.setval('public.resourcesnumbers_id_seq', 15, true);
-
-
---
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tpl522_2
---
-
-SELECT pg_catalog.setval('public.users_id_seq', 3, true);
-
-
---
--- Name: videodetails_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tpl522_2
---
-
-SELECT pg_catalog.setval('public.videodetails_id_seq', 1, false);
-
-
---
--- Name: videos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tpl522_2
---
-
-SELECT pg_catalog.setval('public.videos_id_seq', 5, true);
-
-
---
--- Name: resourcesnumbers resourcesnumbers_pkey; Type: CONSTRAINT; Schema: public; Owner: tpl522_2
---
-
-ALTER TABLE ONLY public.resourcesnumbers
-    ADD CONSTRAINT resourcesnumbers_pkey PRIMARY KEY (id);
-
-
---
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: tpl522_2
---
-
-ALTER TABLE ONLY public.users
-    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
-
-
---
--- Name: videodetails videodetails_pkey; Type: CONSTRAINT; Schema: public; Owner: tpl522_2
---
-
-ALTER TABLE ONLY public.videodetails
-    ADD CONSTRAINT videodetails_pkey PRIMARY KEY (id);
-
-
---
--- Name: favvideos videos_pkey; Type: CONSTRAINT; Schema: public; Owner: tpl522_2
---
-
-ALTER TABLE ONLY public.favvideos
-    ADD CONSTRAINT videos_pkey PRIMARY KEY (id);
-
-
---
--- Name: favvideos videos_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: tpl522_2
---
-
-ALTER TABLE ONLY public.favvideos
-    ADD CONSTRAINT videos_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id);
-
-
---
--- PostgreSQL database dump complete
---
-
