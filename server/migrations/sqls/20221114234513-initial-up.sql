@@ -16,7 +16,7 @@ CREATE TABLE public.users (
     lastname text,
     firstname text,
     email text,
-    sub text,
+    sub text
 );
 
 
