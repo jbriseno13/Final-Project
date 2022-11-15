@@ -1,12 +1,5 @@
 /* Replace with your SQL commands */
 
-CREATE TABLE public.favvideos (
-    id SERIAL PRIMARY KEY,
-    user_id integer NOT NULL,
-    video_rating text,
-    video_topic text,
-    video_id text
-);
 
 CREATE TABLE public.resourcesnumbers (
     id SERIAL PRIMARY KEY,
@@ -26,11 +19,7 @@ CREATE TABLE public.users (
     id integer DEFAULT nextval('public.users_id_seq'::regclass) NOT NULL
 );
 
-CREATE TABLE public.videodetails (
-    id SERIAL PRIMARY KEY,
-    "channelId" text,
-    "videoId" text
-);
+
 
 
 INSERT INTO public.resourcesnumbers (id, image, name, phone, website, note) OVERRIDING SYSTEM VALUE VALUES (2, 'https://adelbkorkorfoundation.org/wp-content/uploads/2021/06/ok2text-300x97.jpg', 'OK2Talk Helpline Teen Helpline', '1 (800) 273-TALK', 'https://ok2talk.org/', NULL);
