@@ -65,5 +65,3 @@ INSERT INTO public.resourcesnumbers (id, image, name, phone, website, note) OVER
 
 
 SELECT pg_catalog.setval('public.resourcesnumbers_id_seq', 15, true);
-SELECT pg_catalog.setval('public.videos_id_seq', 5, true);
-SELECT pg_catalog.setval('public.videodetails_id_seq', 1, false);
