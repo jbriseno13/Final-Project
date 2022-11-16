@@ -123,12 +123,25 @@ app.get("/favorites", cors(), async (req, res) => {
   }
 });
 
-//get request handler for favorites 
+
+
+// get request for favorite videos: 
+app.get("/api/favorites", cors(), async (req, res) => {
+  const userId = req.query.user_id;
+  console.log(userId)
+  try{
+    const {rows:favoritevid} = await db.query("SELECT video_id FROM favvideos WHERE user_id =$1",
+    [userId]);
+    res.send(favoritevid);
+  } catch(e) {
+    console.log(e);
+    return res.status(400).json({ e });
+  }
+});
 
 
 
-
-//post request handler for fav
+//post request handler for favorite videos
 app.post("/favorites", async (req, res) => {
   const favoritevid = {
     user: req.body.user,
@@ -146,6 +159,7 @@ app.post("/favorites", async (req, res) => {
         "INSERT INTO favvideos(user_id, video_id) VALUES($1, $2) RETURNING * ",
         [favoritevid.user, favoritevid.videoId]
       );
+      
       res.send(newFavoritevid.rows);
     } else {
       const deleted = await db.query(
@@ -161,14 +175,13 @@ app.post("/favorites", async (req, res) => {
 
 });
 
-
   //get request for resource page
   app.get("/api/resources", cors(), async (req, res) => {
     try{
       const {rows:resource} = await db.query("SELECT * FROM resourcesnumbers");
       res.send(resource);
     } catch(e) {
-      console.leg(e);
+      console.log(e);
       return res.status(400).json({ e });
     }
   });
