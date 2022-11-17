@@ -83,7 +83,7 @@ h2{
     padding: 10px;
 }
 
-ul{
-    display:flex;
+.reso-ul{
+    display:flex; 
     flex-wrap: wrap;
 }

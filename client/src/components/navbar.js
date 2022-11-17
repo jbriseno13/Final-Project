@@ -109,7 +109,6 @@ function NavBar() {
               </div>
             </div>
           </div>
-
           <container className="top-image-cover"></container> */}
 
           {/* <!-- Contact Section --> */}
