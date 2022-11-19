@@ -7,6 +7,7 @@ const searchButtons = [
   "Anxiety",
   "Depression",
   "Imposter_Syndrome",
+  "Latinx_Therapy",
   "Cultural_Stigmas",
   "Love_Languages",
   "Improve_Communication",

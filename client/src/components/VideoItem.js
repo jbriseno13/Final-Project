@@ -26,7 +26,7 @@ const VideoItem = ({ searchQuery, isFavorite, onUpdate }) => { //use video inste
         "Content-Type": "application/json",
       },
 
-      body: JSON.stringify({ user: user.sub, videoId }),
+      body: JSON.stringify({ user: user.sub, videoId}),
     });
 
     const content = await response.json();
