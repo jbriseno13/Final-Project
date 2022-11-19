@@ -16,6 +16,7 @@ const Resources = ({ user }) => {
 
   return (
     <div className="resources">
+
       <h1 className="resources-h1">
         Mental Health <br></br>Hotlines
       </h1>
@@ -36,6 +37,7 @@ const Resources = ({ user }) => {
                 <a target="_blank" href={reso.website}>
                   <button className="reso-btn">Visit</button>
                 </a>
+
               </li>
             </div>
           );
@@ -43,6 +45,7 @@ const Resources = ({ user }) => {
       </ul>
       <h2 className="resources-h2">
         {" "}
+
         <div className="h2-top">
           This website is not intended for use as an emergency service. If
           you're in a life-threatening situation, do not use this site. Call the
@@ -72,6 +75,7 @@ const Resources = ({ user }) => {
           should also contact the people in your community that are most likely
           to support and advocate for you.
         </div>
+
       </h2>
     </div>
   );
