@@ -16,18 +16,40 @@ const Resources = ({ user }) => {
 
   return (
     <div className="resources">
-      <h1 className="resources-h1">Mental Health Hotlines</h1>
+      <h1 className="resources-h1">Mental Health <br></br>Hotlines</h1>
+      <br></br>
+      <br></br>
+      
+      <ul>
+        {resource.map((reso, index) => {
+          return (
+            <div className="reso-cards">
+              
+              <li key={index} className="reso-index">
+                <img className="reso-image" src={reso.image}></img> 
+                <div className="reso-name">{reso.name}{" "}</div>
+                <div className="reso-note">{reso.note}</div>
+                <br></br>
+                <div className="reso-phone">{reso.phone}</div> 
+                <br></br>
+                <a target='_blank' href ={reso.website}>
+                <button className="reso-btn">Visit</button></a>
+              </li>
+            </div>
+          );
+        })}
+      </ul>
       <h2 className="resources-h2">
         {" "}
-        This website is not intended for use as an emergency service. If you're
+        <div className="h2-top">This website is not intended for use as an emergency service. If you're
         in a life-threatening situation, do not use this site. Call the National
         Suicide Prevention Lifeline, a free, 24-hour hotline, at 1-800-273-8255
         or text "NAMI" TO 741741. Your call will be routed to the crisis center
         near you. If you are experiencing a crisis, go to your nearest emergency
-        room. 
+        room. </div>
         <br></br>
         <br></br>
-        This website is not intended for use as an emergency service. If
+        <div className="h2-bottom">This website is not intended for use as an emergency service. If
         you're in a life-threatening situation, do not use this site. Call the
         National Suicide Prevention Lifeline, a free, 24-hour hotline, at
         1-800-273-8255 or text "NAMI" TO 741741. Your call will be routed to the
@@ -43,22 +65,8 @@ const Resources = ({ user }) => {
         Non-English speakers, our Undocumented community, Neurodivergent people
         and Disabled folks. When calling the police, you should also contact the
         people in your community that are most likely to support and advocate
-        for you.
+        for you.</div>
       </h2>
-      <ul>
-        {resource.map((reso, index) => {
-          return (
-            <div className="reso-cards">
-              <li key={index} className="reso-index">
-                <img className="reso-image" src={reso.image}></img> {reso.name}{" "}
-                {reso.note}
-                {reso.phone} 
-                {reso.website}
-              </li>
-            </div>
-          );
-        })}
-      </ul>
     </div>
   );
 };

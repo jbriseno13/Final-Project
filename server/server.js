@@ -123,7 +123,12 @@ app.get("/favorites", cors(), async (req, res) => {
   }
 });
 
-//post request for fav
+//get request handler for favorites 
+
+
+
+
+//post request handler for fav
 app.post("/favorites", async (req, res) => {
   const favoritevid = {
     user: req.body.user,

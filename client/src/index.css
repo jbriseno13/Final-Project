@@ -106,4 +106,9 @@ code {
   transition: all 0.3s ease;
 }
 
+.videos.main{
+    background-color: rgb(249, 242, 242) !important;
+    background-size: cover;
+    width: 100%;
 
+}

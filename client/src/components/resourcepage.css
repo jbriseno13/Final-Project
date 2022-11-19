@@ -1,10 +1,13 @@
 .resources-h1{
     color: black;
     font-family: 'Poppins';
-    font-size: 44px;
+    font-size: 70px;
     font-weight:600;
-    margin:10px 20px 30px;
-    text-align: center;
+    line-height: 1.1;
+    /* margin:10px 20px 30px; */
+    /* text-align: center; */
+    padding: 200px;
+    background-color:rgb(207, 222, 208)
 }
 
 h2{
@@ -14,6 +17,22 @@ h2{
     
 }
 
+.h2-top{
+   
+    margin-left:auto;
+    margin-right: auto;
+    
+}
+
+.h2-bottom{
+    
+    margin-left:auto;
+    margin-right: auto;
+}
+/* Top description section */
+
+
+/* cards index css */
 .reso-cards{
     text-align: center;
     padding: 50px;
@@ -21,19 +40,50 @@ h2{
     list-style-type: none;
     border-radius: 5px;
     width: 500px;
-    height: 700px;
+    height: 500px;
     display: block;
     align-items: center;
-    justify-content: space-around;
-    box-shadow: 0 4px 8px 0 rgba(#01AEF0);
+    justify-content: center;
     transition: 0.3s;
-    overflow: hidden; 
+    overflow-y: scroll; 
     background-color: #FFFFFF; 
     color:#656565;
     font-family: "metropolis-regular", sans-serif;
 }
 
+
 .reso-image{
-   max-height: 400px;
+   padding: 15px 10px; 
+   max-height: 300px;
    max-width: 400px;
+}
+
+.reso-name{
+    font-size:30px;
+    font-weight: 200;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.reso-phone{
+    font-weight:500;
+    font-size:20px;
+    color:black;
+}
+
+.reso-btn{
+    padding: 10px;
+    background: #56e2a8e0;
+    border-radius: 20px;
+    width: 300px;
+    border: none;
+}
+
+.reso-website{
+    padding: 10px;
+}
+
+ul{
+    display:flex;
+    flex-wrap: wrap;
 }
