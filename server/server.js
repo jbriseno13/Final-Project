@@ -125,23 +125,27 @@ app.get("/favorites", cors(), async (req, res) => {
 
 
 
-
-// get request for favorite videos: 
 app.get("/api/favorites", cors(), async (req, res) => {
-  const userId = req.query.user_id;
-  console.log("Inside favorites", req)
-  try{
-    const {rows:favoritevid} = await db.query("SELECT video_id FROM favvideos WHERE user_id =$1",
-    [userId]);
+  const userSub = req.query.user;
+  console.log("Inside favorites", req);
+  try {
+    const userIdResult = await db.query("SELECT id from users WHERE sub = $1", [
+      userSub,
+    ]);
+    console.log("userSub here", JSON.stringify(userIdResult));
+
+    const userId = userIdResult.rows[0].id;
+
+    const { rows: favoritevid } = await db.query(
+      "SELECT video_id, title,thumbnails FROM favvideos WHERE user_id =$1",
+      [userId]
+    );
     res.send(favoritevid);
-  } catch(e) {
+  } catch (e) {
     console.log(e);
     return res.status(400).json({ e });
   }
-
 });
-
-
 
 //post request handler using same endpoint-will toggle existing f favorite videos
 
@@ -149,15 +153,17 @@ app.post("/favorites", async (req, res) => {
   const favoritevid = {
     user: req.body.user,
     videoId: req.body.videoId,
+    title: req.body.title,
+    thumbnails: req.body.thumbnails,
   };
   console.log(favoritevid);
   try {
-    const userIdResult = await db.query("SELECT id from users WHERE sub = $1", [favoritevid.user])
+    const userIdResult = await db.query("SELECT id from users WHERE sub = $1", [
+      favoritevid.user,
+    ]);
     console.log("JSON HERE", JSON.stringify(userIdResult));
 
     const userId = userIdResult.rows[0].id;
-    
-
 
     const favVidId = await db.query(
       "SELECT id FROM favvideos WHERE user_id = $1 AND video_id=$2 ",
@@ -166,47 +172,61 @@ app.post("/favorites", async (req, res) => {
 
     if (favVidId.rows.length === 0) {
       const newFavoritevid = await db.query(
-        "INSERT INTO favvideos(user_id, video_id) VALUES($1, $2) RETURNING * ",
-        [userId, favoritevid.videoId]
+        "INSERT INTO favvideos(user_id, title, thumbnails,video_id) VALUES($1, $2, $3, $4) RETURNING * ",
+        [userId, favoritevid.title,favoritevid.thumbnails,favoritevid.videoId  ]
       );
-      
+
       res.send(newFavoritevid.rows);
     } else {
-      const deleted = await db.query(
-        "DELETE FROM favvideos WHERE id =$1",
-        [favVidId.rows[0].id]
-      );
-      res.send(deleted.rows)
+      const deleted = await db.query("DELETE FROM favvideos WHERE id =$1", [
+        favVidId.rows[0].video.id,
+      ]);
+      res.send(deleted.rows);
     }
   } catch (e) {
     console.log(e);
     res.status(400).send({ e });
   }
-
 });
 
-  //get request for resource page
-  app.get("/api/resources", cors(), async (req, res) => {
-    try{
-      const {rows:resource} = await db.query("SELECT * FROM resourcesnumbers");
-      res.send(resource);
-    } catch(e) {
-      console.log(e);
-      return res.status(400).json({ e });
-    }
-  });
+//delete endpoint for favvideos
 
-  //get request for landingpage page content
-  app.get("/api/landing", cors(), async (req, res) => {
-    try{
-      const {rows:landingpagecontent} = await db.query("SELECT * FROM landingpagecontent");
-      res.send(landingpagecontent);
-    } catch(e) {
-      console.log(e);
-      return res.status(400).json({ e });
-    }
-  });
+app.delete("/favorites/:id", async (req, res) => {
+  const videoId = req.params.id;
+  console.log("this is video id", videoId);
+  try {
+    const deleted = await db.query("DELETE FROM favvideos WHERE video_id =$1", [
+      videoId,
+    ]);
+    res.send(deleted.rows);
+  } catch (e) {
+    console.log(e);
+    res.status(400).send({ e });
+  }
+});
 
+//get request for resource page
+app.get("/api/resources", cors(), async (req, res) => {
+  try {
+    const { rows: resource } = await db.query("SELECT * FROM resourcesnumbers");
+    res.send(resource);
+  } catch (e) {
+    console.log(e);
+    return res.status(400).json({ e });
+  }
+});
 
+//get request for landingpage page content
+app.get("/api/landing", cors(), async (req, res) => {
+  try {
+    const { rows: landingpagecontent } = await db.query(
+      "SELECT * FROM landingpagecontent"
+    );
+    res.send(landingpagecontent);
+  } catch (e) {
+    console.log(e);
+    return res.status(400).json({ e });
+  }
+});
 
 app.listen(PORT, () => console.log(`Hello. Server on port ${PORT}`));
