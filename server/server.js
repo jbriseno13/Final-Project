@@ -124,7 +124,7 @@ app.get("/favorites", cors(), async (req, res) => {
 });
 
 
-// get request for favorite videos:
+
 app.get("/api/favorites", cors(), async (req, res) => {
   const userSub = req.query.user;
   console.log("Inside favorites", req);
