@@ -1,17 +1,48 @@
-// import React form 'react'; 
+// import React form 'react';
 import PrivateNavBar from "./navBarPrivate/navbarprivate";
-import "./landingpage.css"
+
+import "./landingpage.css";
+import { useEffect, useState } from "react";
+//import Profile from "./profile"
 
 const LandingPage = () => {
-    return (
-        <div className="landing-page-welcome"> 
-        {/* <PrivateNavBar/> */}
-        <h1 className="landing-h1">TERA <br></br> Your mental health resource app</h1>
-        <h2 className="landing-h1">Learn More about Mental Health</h2>
+  const [landingpagecontent, setLandingpagecontent] = useState([]);
 
-        </div>
-    )
 
-}
+  const getLandingpagecontent = async () => {
+    const response = await fetch("/api/landing");
+    const landingpagecontent = await response.json();
+    setLandingpagecontent(landingpagecontent);
+  };
 
-export default LandingPage; 
+  useEffect(() => {
+    getLandingpagecontent();
+  }, []);
+
+  return (
+    <div className="landing-page-welcome">
+        <div className="hero-landing">
+      <h1 className="landing-h1">
+        TERA <br></br> (te·rə)<br></br>Your mental health 
+      </h1>
+      </div>
+      <h2 className="landing-h2">How does it Work?</h2>
+      <ul className="landing-cards-area">
+        {landingpagecontent.map((landing, index) => {
+          return (
+            <div className="landing-cards">
+              <li key={index} className="landing-index">
+                <img className="landing-image" src={landing.image}></img>
+                <div className="landing-name">{landing.description} </div>
+                <div className="landing-note">{landing.details}</div>
+              </li>
+            </div>
+          );
+        })}
+      </ul>
+      <footer className="footer-landing"></footer>
+    </div>
+  );
+};
+
+export default LandingPage;

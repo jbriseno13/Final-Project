@@ -9,6 +9,7 @@ import { Route, Routes, Link } from "react-router-dom";
 import AuthenticationButton from "./components/authentication-button";
 import LandingPage from "./components/landingpage";
 import PrivateNavBar from "./components/navBarPrivate/navbarprivate";
+import Favorite from "./components/favorites";
 
 // import { Routes } from 'react-router-dom';
 
@@ -28,6 +29,7 @@ function App() {
           <Routes>
            <Route path="/" element={<LandingPage/>}/>
             <Route path="/videos" element={<VideosPage/>}/>
+            <Route path="/favorites" element={<Favorite/>}/>
             <Route path="/resources" element={<Resources/>}/>
             <Route path="/profile" element={<Profile/>}/>
           </Routes>
@@ -169,6 +171,7 @@ function App() {
                 )} */}
               </div>
             </header>
+            <footer className="home-landing"></footer>
           </div>
         </>
       )}

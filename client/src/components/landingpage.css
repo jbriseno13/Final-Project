@@ -1,7 +1,59 @@
 body {
-    background-color: rgb(249, 242, 242);
-    background-image:url(/Users/tpl522_2/tera/client/src/images/terawallpaper.jpeg);
-    background-repeat:no-repeat;
+
+
+    background-color: white;
     background-size: cover;
     width: 100%;
+}
+
+.hero-landing{
+    padding: 200px;
+    background-color: rgb(46, 65, 75);
+    
+}
+
+.landing-h1{
+    font-size: 60px;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.landing-h2{
+    padding: 30px;
+    background-color:rgb(202, 199, 199);
+    font-size: 40px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.landing-cards{
+    display: inline-block;
+    flex-direction: row;
+    width: 500px;
+    padding: 20px;
+    margin-left:auto;
+}
+
+.landing-image{
+    padding: 15px 10px; 
+    max-height: 400px;
+    max-width: 400px;
+    background: white;
+ }
+
+ .landing-name{
+    color:black;
+    font-weight: 700;
+    font-size: 20px;
+ }
+
+
+ .landing-note {
+    color: black; 
+ }
+
+.footer-landing{
+    padding: 200px;
+    background-color:rgb(137, 107, 96)
+
 }

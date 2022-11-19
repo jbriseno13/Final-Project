@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import VideoItem from "../VideoItem";
 import NavBar from "../navbar";
 // import PrivateNavBar from "./navbarprivate";
@@ -21,20 +21,38 @@ const searchButtons = [
   "Mental_Health",
 ];
 
-const VideosPage = () => {
+const VideosPage = ( {onUpdate}) => {
   const [video, setVideo] = useState();
   const [searchQuery, setSearchQuery] = useState("anxiety");
   const [favvideos, setFavvideos] = useState([]);
 
+  // const favoritevid = async (videoId) => {
+  //   await fetch(`/favorites/${videoId}`, {
+  //     method: "POST",
+  //   });
+
+  //   onUpdate();
+  //   console.log(videoId);
+  // };
+
+  
+  // const getFavvideos = async () => {
+  //   const response = await fetch ('api/favorites');
+  //   const video = await response.json();
+  //   setFavvideos(favvideos);
+
+  // };
+
+
   return (
-    
-    <div className="main" id="videos">
+    <div className="main-video" id="videos">
+      <div className="main-video-spacer"></div>
       <div className="main__video__content">
-        <h1>Search Video!</h1>
-        <h2>Watch videos and learn more about mental health.</h2>
+        <h1>Choose A Topic!</h1>
+        <h2>Watch videos and learn more about these topics.</h2>
         <p>
           {" "}
-          Videos Topics <br></br> 
+          Videos Topics <br></br>
         </p>
         {searchButtons.map((button, ind) => {
           return (
@@ -58,11 +76,12 @@ const VideosPage = () => {
             <div>
               <VideoItem searchQuery={searchQuery} />
             </div>
-           
+
             <i className="fas fa-layer-group"></i>
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

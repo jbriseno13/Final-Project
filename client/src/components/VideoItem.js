@@ -1,26 +1,48 @@
-import { useState, useEffect } from "react";
-import NotesSection from "./notesSection"; 
+import { useState, useEffect, useReducer } from "react";
+import NotesSection from "./notesSection";
+import { useAuth0 } from "@auth0/auth0-react";
 
-const VideoItem = ({ searchQuery }) => {
+const VideoItem = ({ searchQuery, isFavorite, onUpdate }) => { //use video instead of the other props.
+  const { isAuthenticated, user } = useAuth0();
   const [videos, setVideos] = useState([]);
-  const [ currVid, setCurrVid ] = useState("");
+  const [currVid, setCurrVid] = useState("");
 
-  const getVideos = async () => {
+  const getVideos = async () => {//move to video page
+    console.log("user", user);
     const response = await fetch(`/search/${searchQuery}`);
+    console.log("response", response);
     const videoItems = await response.json();
-    setVideos(videoItems.items)
-    setCurrVid(videoItems.items[0].id.videoId)
+    console.log("videoItems", videoItems);
+    setVideos(videoItems.items);
+    setCurrVid(videoItems.items[0].id.videoId);
+  };
+
+  const favoritevid = async (videoId) => {
+    console.log("favorite vid");
+    const response = await fetch(`/favorites`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({ user: user.sub, videoId }),
+    });
+
+    const content = await response.json();
+    console.log("content", content);
+
+    setVideos(videos, content);
+
+    onUpdate();
+    console.log(videoId);
   };
 
   useEffect(() => {
     getVideos();
   }, [searchQuery]);
 
-
-  
-
   return (
-    
     <div className="video-card-div">
       {videos?.id?.videoId}
       {/* //conditional rendering */}
@@ -34,24 +56,25 @@ const VideoItem = ({ searchQuery }) => {
           allowfullscreen
           title="video"
         />
-        
-     
-      ) }
-      
-       
+      )}
+
       {/* iframe  goes here */}
-     
+
       <div className="cards_wrapper">
         {videos &&
           videos.map((video, index) => {
             return (
               <div className="video-cards" key={index}>
-                {video.id.videoId}
+                {/* {video.id.videoId} */}
                 <div
                   onClick={() => setCurrVid(video.id.videoId)}
                   className=" video-item item"
-                > 
-                  <img className='ui image' src={video.snippet.thumbnails.medium.url} alt={video.snippet.description}/>
+                >
+                  <img
+                    className="ui image"
+                    src={video.snippet.thumbnails.medium.url}
+                    alt={video.snippet.description}
+                  />
                   <div className="ui segment">
                     <h4 className="ui header">{video.snippet.title}</h4>
                     <p>{video.snippet.description}</p>
@@ -63,7 +86,14 @@ const VideoItem = ({ searchQuery }) => {
                 >
                   Play
                 </button>
-                <button>Favorites</button>
+
+                <button
+                  className="fav-btn"
+                  onClick={() => favoritevid(video.id.videoId)}
+                >
+                  {" "}
+                  {isFavorite ? "Dislike" : "Like"}
+                </button>
               </div>
             );
           })}
