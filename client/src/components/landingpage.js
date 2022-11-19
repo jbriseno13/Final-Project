@@ -1,11 +1,13 @@
 // import React form 'react';
 import PrivateNavBar from "./navBarPrivate/navbarprivate";
+
 import "./landingpage.css";
 import { useEffect, useState } from "react";
 //import Profile from "./profile"
 
 const LandingPage = () => {
   const [landingpagecontent, setLandingpagecontent] = useState([]);
+
 
   const getLandingpagecontent = async () => {
     const response = await fetch("/api/landing");

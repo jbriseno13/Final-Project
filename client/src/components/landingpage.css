@@ -1,4 +1,6 @@
 body {
+
+
     background-color: white;
     background-size: cover;
     width: 100%;
@@ -53,4 +55,5 @@ body {
 .footer-landing{
     padding: 200px;
     background-color:rgb(137, 107, 96)
+
 }

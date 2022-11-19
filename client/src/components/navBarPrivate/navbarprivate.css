@@ -27,7 +27,9 @@
 
   body {
     background-color: rgb(249, 242, 242);
+
     /* background-image:url(/Users/tpl522_2/tera/client/src/images/terawallpaper.jpeg); */
+
     background-repeat:no-repeat;
     background-size: cover;
     width: 100%;

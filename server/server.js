@@ -125,6 +125,7 @@ app.get("/favorites", cors(), async (req, res) => {
 
 
 
+
 // get request for favorite videos: 
 app.get("/api/favorites", cors(), async (req, res) => {
   const userId = req.query.user_id;
@@ -143,6 +144,7 @@ app.get("/api/favorites", cors(), async (req, res) => {
 
 
 //post request handler using same endpoint-will toggle existing f favorite videos
+
 app.post("/favorites", async (req, res) => {
   const favoritevid = {
     user: req.body.user,
