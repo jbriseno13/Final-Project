@@ -34,8 +34,8 @@ const VideoItem = ({ searchQuery, isFavorite, onUpdate }) => { //use video inste
 
     setVideos(videos, content);
 
-    onUpdate();
-    console.log(videoId);
+    // onUpdate()
+    // console.log(videoId);
   };
 
   useEffect(() => {

@@ -1,46 +1,95 @@
 import { useState, useEffect } from "react";
-// import VideosPage from "../components/navBarPrivate/videospage";
-
-// Notes if you're going to recreate the VideoItem component
-//GET https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=Ks-_Mh1QhMc%2Cc0KYU2j0TM4%2CeIho2S0ZahI&key=[YOUR_API_KEY] HTTP/1.1
-//Note: use video list to render fav videos. 
-
-import VideoItem from "./VideoItem";
+import { useAuth0 } from "@auth0/auth0-react";
+import MotivationalQuote from "./motivation";
+import "./favorites.css";
 
 const Favorite = () => {
+  const { user } = useAuth0(); //gets info from auth0
   const [video, SetVideo] = useState([]); // <-- same logic as currVideo VideoItem
-  // TODO: set a state for the list of favorites id's: favoriteIDs
-  // TODO: set a state for the videos: videos
+  const [currFavVid, setCurrFavVid] = useState("");
 
-
-  // GET request - for getting a list of your favorites ID's
-  // TODO: Test this endpoint - does it work? Does it return your favorites?
-  const getFavorites = async () => {
-    console.log(getFavorites,"getFavorites")
-    const favoritesList = await fetch(`/api/favorites`);
-    const favorites = await favoritesList.json();
-    // TODO: get the response^^, update your favoriteIDs state with it
-    // TODO: write another await fetch for // GET https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=Ks-_Mh1QhMc%2Cc0KYU2j0TM4%2CeIho2S0ZahI&key=[YOUR_API_KEY] HTTP/1.1
-    // ^^ note that if you write your GET req here, you'll need to pull your API key/secret info from your client .env. 
-      // ^^ if you write your GET req in the server file, you can use the same API key in your server dir .env
-    // ^^ based on the response you get there, then you're going to update a videos state
+  const getFavorites = async (userId) => {
+    console.log(getFavorites, "getFavorites");
+    const favoritesList = await fetch(`/api/favorites?user=${user.sub}`);
+    const content = await favoritesList.json();
+    SetVideo(content);
+    console.log(content);
+    setCurrFavVid(content[0].video_id);
   };
-
-
 
   useEffect(() => {
     getFavorites();
   }, []);
 
-  // Down here: copy the code you have for VideoItem (the iframe stuff, the cards) 
+  const handleDeleteFavVid = async (deleteFavvid) => {
+    let response = await fetch(
+      `/favorites/${deleteFavvid}`,
+      {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+        },
+        body: JSON.stringify(video),
+      }
+    );
+    await response.json();
+    const deleteFavvidFunction = video.filter((i) => i.id !== deleteFavvid);
+    console.log(deleteFavvidFunction);
+    SetVideo(deleteFavvidFunction);
+
+    getFavorites();
+  
+  };
+
   return (
-    <div className="main-video-favList">
+    <div className="blank-favs">
+      <div className="main-video-favList">
+        <div className="quote-section">
+          <MotivationalQuote /> <br></br>
+        </div>
+        <div>
+          <button className="add-form-btn">Add Entry</button>
+        </div>
+      </div>
+
       <div className="fav-video-list">List of Favorite Videos </div>
       <div className="favorites-videos-div">
-        <div className="favorites-iframe">iframe</div>
-        <div className="favorites-cards">card</div>
+        {video?.video_id}
+        {video.length > 0 && (
+          <iframe
+            className="fav-vid-iframe"
+            src={`https://www.youtube.com/embed/${currFavVid}`}
+            frameborder="0"
+            height="350px"
+            width="450px"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+            title="video"
+          />
+        )}
+
+        <div className="favorites-wrap"></div>
+        {video &&
+          video.map((item, index) => {
+            console.log("this is the item",item)
+            return (
+              <div
+                className="favorites-cards"
+                key={index}
+                onClick={() => setCurrFavVid(item.video_id)}
+              >
+                <img
+                  className="fav-vid-image"
+                  src={item.thumbnails}
+                  alt={item.title}
+                />
+                {item.title}
+                <button className="unlike-btn" onClick={() => handleDeleteFavVid(item.video_id)}>Unlike</button>
+                
+              </div>
+            );
+          })}
       </div>
-      <VideoItem video={video} isFavorite={false} onUpdate={getFavorites} />
     </div>
   );
 };
