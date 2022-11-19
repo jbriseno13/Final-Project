@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import MotivationalQuote from "./motivation";
 import "./favorites.css";
+import Form from "./form";
 
 const Favorite = () => {
   const { user } = useAuth0(); //gets info from auth0
-  const [video, SetVideo] = useState([]); // <-- same logic as currVideo VideoItem
+  const [video, SetVideo] = useState([]); 
   const [currFavVid, setCurrFavVid] = useState("");
 
   const getFavorites = async (userId) => {
@@ -22,37 +23,47 @@ const Favorite = () => {
   }, []);
 
   const handleDeleteFavVid = async (deleteFavvid) => {
-    let response = await fetch(
-      `/favorites/${deleteFavvid}`,
-      {
-        method: "DELETE",
-        headers: {
-          Accept: "application/json",
-        },
-        body: JSON.stringify(video),
-      }
-    );
+    let response = await fetch(`/favorites/${deleteFavvid}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+      },
+      body: JSON.stringify(video),
+    });
     await response.json();
     const deleteFavvidFunction = video.filter((i) => i.id !== deleteFavvid);
     console.log(deleteFavvidFunction);
     SetVideo(deleteFavvidFunction);
 
     getFavorites();
-  
   };
 
   return (
     <div className="blank-favs">
       <div className="main-video-favList">
         <div className="quote-section">
+          <h1 className="user-name-welcome">Hi, {user.given_name}!</h1>
+          <br></br>
           <MotivationalQuote /> <br></br>
         </div>
-        <div>
-          <button className="add-form-btn">Add Entry</button>
-        </div>
       </div>
+      <br></br>
 
-      <div className="fav-video-list">List of Favorite Videos </div>
+      <div className="fav-video-list">
+        <div>
+          <h1 className="fav-video-mid-section">How are you doing today?</h1>
+          <label className="search-label">Search by date:</label>
+          <input
+            
+            className="search-bar"
+            type="date"
+            placeholder="Search a journal entry"
+          />
+        </div>
+
+        <Form />
+      </div>
+      <h1 className="liked-videos">Liked Videos</h1>
       <div className="favorites-videos-div">
         {video?.video_id}
         {video.length > 0 && (
@@ -71,7 +82,7 @@ const Favorite = () => {
         <div className="favorites-wrap"></div>
         {video &&
           video.map((item, index) => {
-            console.log("this is the item",item)
+            console.log("this is the item", item);
             return (
               <div
                 className="favorites-cards"
@@ -84,12 +95,17 @@ const Favorite = () => {
                   alt={item.title}
                 />
                 {item.title}
-                <button className="unlike-btn" onClick={() => handleDeleteFavVid(item.video_id)}>Unlike</button>
-                
+                <button
+                  className="unlike-btn"
+                  onClick={() => handleDeleteFavVid(item.video_id)}
+                >
+                  Unlike
+                </button>
               </div>
             );
           })}
       </div>
+      <footer></footer>
     </div>
   );
 };
