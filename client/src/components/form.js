@@ -1,22 +1,32 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Form = () => {
-  const { user } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState({
+    userId: user.userId,
     date: "",
     question: "",
     post: "",
   });
  
   const getPosts = async () => {
-    const postList = await fetch(`/api/posts?user=${user.userId}`);
-    const posts = await postList.json();
+   // const response = await fetch(`/api/posts`);
+    const response = await fetch("/api/allposts", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({sub: user.sub}),
+    });
+    
+    const posts = await response.json();
     console.log("Post Here", posts);
-   setPosts(posts);
-    setNewPost(posts[0].userId);
+   setPosts([...posts]);
+    setNewPost(posts[0].user_id);
   };
   
   useEffect(() => {
@@ -26,9 +36,10 @@ const Form = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const addedPost = {
+      sub: user.sub,
+      date: newPost.date,
+      question: newPost.question,
       post: newPost.post,
-      image: newPost.image,
-      description: newPost.description,
     };
 
     const response = await fetch("/api/posts", {
@@ -43,6 +54,7 @@ const Form = () => {
 
     setPosts([...posts, content]);
     setNewPost({
+      sub: user.sub,
       date: "",
       question: "",
       post: "",
@@ -53,12 +65,12 @@ const Form = () => {
   return (
     <div className="post-section">
       <div className="post-wrapper">
-        {posts.map((posts, index) => {
+        {posts && posts.map((post, index) => { //will only run if posts is truthy- not an empty string, null, undefined. 
           return (
             <div className="posts-cards" key={index}>
-              <div className="posts-date" src={posts.date}></div>
-              <div className="posts-question">{posts.question}</div>
-              <div className="posts-post">{posts.post}</div>
+              <div className="posts-date">{post.date}</div>
+              <div className="posts-question">{post.question}</div>
+              <div className="posts-post">{post.post}</div>
      
               {/* <button
                     className="post-dlt-btn"
@@ -70,13 +82,13 @@ const Form = () => {
           );
         })}
       </div>
-      <form className="day-note-section">
+      <form className="day-note-section" onSubmit= {(e) => handleSubmit(e)}>
         <div id="form-card">
-          <fieldset onSubmit={handleSubmit}>
+          <fieldset>
           <div calssName="form-section">
             <label>Today's Date</label>
             <input
-              type="datetime-local"
+              type="date"
               id="add-date-of-sighting"
               value={newPost.date}
               onChange={(e) => {
@@ -125,7 +137,7 @@ const Form = () => {
             />
           </fieldset>
         </div>
-        <button className="add-form-btn" type="submit">
+        <button className="add-form-btn" type="submit" >
           Add
         </button>
       </form>

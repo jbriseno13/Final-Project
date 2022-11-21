@@ -33,10 +33,10 @@ app.get("/search/:searchQuery", async (req, res, next) => {
   const searchQuery = req.params.searchQuery;
   try {
     const url = `${apiUrl}/search?key=${apiKey}&type=video&part=snippet&q=${searchQuery}&maxResults=10`;
-    console.log("This is the url", url);
+    //console.log("This is the url", url);
 
     const response = await axios.get(url);
-    console.log(response);
+    //console.log(response);
     res.send(response.data);
   } catch (err) {
     next(err);
@@ -47,7 +47,7 @@ app.get("/search-with-googleapis", async (req, res, next) => {
   try {
     const searchQuery = req.query.search_query;
     const url = `${apiUrl}/search?part=snippet&q=${searchQuery}&type=video&videoCaption=closedCaption&key=${apiKey}&maxResults=10`;
-    console.log(url);
+    //console.log(url);
     const response = await youtube.search.list({
       part: "snippet",
       q: searchQuery,
@@ -85,7 +85,7 @@ app.get("/api/users", cors(), async (req, res) => {
 
 //add new user to user table when they log in:
 app.post("/api/me", cors(), async (req, res) => {
-  console.log("Im in here", req.body);
+  //console.log("Im in here", req.body);
   const newUser = {
     lastname: req.body.family_name,
     firstname: req.body.given_name,
@@ -123,16 +123,14 @@ app.get("/favorites", cors(), async (req, res) => {
   }
 });
 
-
-
 app.get("/api/favorites", cors(), async (req, res) => {
   const userSub = req.query.user;
-  console.log("Inside favorites", req);
+  //console.log("Inside favorites", req);
   try {
     const userIdResult = await db.query("SELECT id from users WHERE sub = $1", [
       userSub,
     ]);
-    console.log("userSub here", JSON.stringify(userIdResult));
+   // console.log("userSub here", JSON.stringify(userIdResult));
 
     const userId = userIdResult.rows[0].id;
 
@@ -156,26 +154,25 @@ app.post("/favorites", async (req, res) => {
     title: req.body.title,
     thumbnails: req.body.thumbnails,
   };
-  console.log(favoritevid);
+  //console.log(favoritevid);
   try {
     const userIdResult = await db.query("SELECT id from users WHERE sub = $1", [
       favoritevid.user,
     ]);
-   // console.log("JSON HERE", JSON.stringify(userIdResult));
+    // console.log("JSON HERE", JSON.stringify(userIdResult));
 
     const userId = userIdResult.rows[0].id;
-    console.log("User ID here!!",userId);
+    //console.log("User ID here!!", userId);
     const favVidId = await db.query(
       "SELECT id FROM favvideos WHERE user_id = $1 AND video_id=$2",
       [userId, favoritevid.videoId]
     );
-    
 
     if (favVidId.rows.length === 0) {
-      console.log("Im in here");
+      //console.log("Im in here");
       const newFavoritevid = await db.query(
         "INSERT INTO favvideos(user_id, title, thumbnails,video_id) VALUES($1, $2, $3, $4) RETURNING * ",
-        [userId, favoritevid.title,favoritevid.thumbnails,favoritevid.videoId  ]
+        [userId, favoritevid.title, favoritevid.thumbnails, favoritevid.videoId]
       );
 
       res.send(newFavoritevid.rows);
@@ -195,7 +192,7 @@ app.post("/favorites", async (req, res) => {
 
 app.delete("/favorites/:id", async (req, res) => {
   const videoId = req.params.id;
-  console.log("this is video id", videoId);
+  //console.log("this is video id", videoId);
   try {
     const deleted = await db.query("DELETE FROM favvideos WHERE video_id =$1", [
       videoId,
@@ -232,38 +229,43 @@ app.get("/api/landing", cors(), async (req, res) => {
 });
 
 //post section get request
-app.get("/api/posts/:id", cors(), async (req, res) => {
-  const userId = req.params.id;
+app.post("/api/allposts", cors(), async (req, res) => {
+  const sub = req.body.sub; //holds sub value = google auth id
   try {
-    const posts  = await db.query("SELECT * FROM posts WHERE user_id =$1",[userId]);
-    res.send(posts);
+    const userId = await db.query("SELECT id from users WHERE sub = $1", [sub]);
+    //console.log("User Id", userId);
+    const posts = await db.query("SELECT * FROM posts WHERE user_id =$1", [
+      userId.rows[0].id,
+    ]);
+   // console.log("post",posts)
+    res.send(posts.rows);
   } catch (e) {
     console.log("Get Error", e);
     return res.status(400).json({ e });
   }
 });
 
-app.post("/api/posts", cors(), async (req, res) => {
+app.post("/api/posts/", cors(), async (req, res) => {
   const newPost = {
+    sub:req.body.sub,
     // timestamp: req.body.timestamp,
     date: req.body.date,
     question: req.body.question,
-    post: req.body.post
+    post: req.body.post,
   };
-  console.log([
-  
-    // newPost.timestamp,
-    newPost.date,
-    newPost.question,
-    newPost.post,
-  ]);
+  // console.log([
+  //   newPost.timestamp,
+  //   newPost.date,
+  //   newPost.question,
+  //   newPost.post,
+  // ]);
+  const userId = await db.query("SELECT id from users WHERE sub = $1", [newPost.sub]);
   const result = await db.query(
-    "INSERT INTO posts( date, question, post) VALUES(CURRENT_TIME, $1, $2) RETURNING *",
-    [  newPost.date, newPost.question, newPost.post]
+    "INSERT INTO posts( date, question, post, user_id) VALUES($1, $2, $3, $4) RETURNING *",
+    [newPost.date, newPost.question, newPost.post, userId.rows[0].id ]
   );
-  console.log(result.rows[0]);
-  res.json(result.rows[0]);
+  //console.log(result.rows[0]);
+  res.send(result.rows[0]);
 });
-
 
 app.listen(PORT, () => console.log(`Hello. Server on port ${PORT}`));

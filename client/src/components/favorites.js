@@ -11,11 +11,11 @@ const Favorite = () => {
   const [currFavVid, setCurrFavVid] = useState("");
 
   const getFavorites = async (userId) => {
-    console.log(getFavorites, "getFavorites");
+    //console.log(getFavorites, "getFavorites");
     const favoritesList = await fetch(`/api/favorites?user=${user.sub}`);
     const content = await favoritesList.json();
     SetVideo(content);
-    console.log(content);
+    //console.log(content);
     setCurrFavVid(content[0].video_id);
   };
 
@@ -33,7 +33,7 @@ const Favorite = () => {
     });
     await response.json();
     const deleteFavvidFunction = video.filter((i) => i.id !== deleteFavvid);
-    console.log(deleteFavvidFunction);
+    //console.log(deleteFavvidFunction);
     SetVideo(deleteFavvidFunction);
 
     getFavorites();
@@ -84,7 +84,7 @@ const Favorite = () => {
 
         {video &&
           video.map((item, index) => {
-            console.log("this is the item", item);
+            //console.log("this is the item", item);
             return (
               <div className="fav-cards-wrapper">
                 <div

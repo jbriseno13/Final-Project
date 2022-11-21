@@ -16,8 +16,8 @@ function Posts() {
     <div className="posts">
       <ul>
         {posts.map((p) => (
-          <li key={posts.id}>
-            {posts.date} {posts.question} {posts.post}
+          <li key={p.id}>
+            {p.date} {p.question} {p.post}
           </li>
         ))}
       </ul>
