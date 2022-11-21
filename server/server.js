@@ -161,16 +161,18 @@ app.post("/favorites", async (req, res) => {
     const userIdResult = await db.query("SELECT id from users WHERE sub = $1", [
       favoritevid.user,
     ]);
-    console.log("JSON HERE", JSON.stringify(userIdResult));
+   // console.log("JSON HERE", JSON.stringify(userIdResult));
 
     const userId = userIdResult.rows[0].id;
-
+    console.log("User ID here!!",userId);
     const favVidId = await db.query(
-      "SELECT id FROM favvideos WHERE user_id = $1 AND video_id=$2 ",
+      "SELECT id FROM favvideos WHERE user_id = $1 AND video_id=$2",
       [userId, favoritevid.videoId]
     );
+    
 
     if (favVidId.rows.length === 0) {
+      console.log("Im in here");
       const newFavoritevid = await db.query(
         "INSERT INTO favvideos(user_id, title, thumbnails,video_id) VALUES($1, $2, $3, $4) RETURNING * ",
         [userId, favoritevid.title,favoritevid.thumbnails,favoritevid.videoId  ]
@@ -228,5 +230,40 @@ app.get("/api/landing", cors(), async (req, res) => {
     return res.status(400).json({ e });
   }
 });
+
+//post section get request
+app.get("/api/posts/:id", cors(), async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const posts  = await db.query("SELECT * FROM posts WHERE user_id =$1",[userId]);
+    res.send(posts);
+  } catch (e) {
+    console.log("Get Error", e);
+    return res.status(400).json({ e });
+  }
+});
+
+app.post("/api/posts", cors(), async (req, res) => {
+  const newPost = {
+    // timestamp: req.body.timestamp,
+    date: req.body.date,
+    question: req.body.question,
+    post: req.body.post
+  };
+  console.log([
+  
+    // newPost.timestamp,
+    newPost.date,
+    newPost.question,
+    newPost.post,
+  ]);
+  const result = await db.query(
+    "INSERT INTO posts( date, question, post) VALUES(CURRENT_TIME, $1, $2) RETURNING *",
+    [  newPost.date, newPost.question, newPost.post]
+  );
+  console.log(result.rows[0]);
+  res.json(result.rows[0]);
+});
+
 
 app.listen(PORT, () => console.log(`Hello. Server on port ${PORT}`));
