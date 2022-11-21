@@ -19,7 +19,7 @@
   background-color: #cb7428;
   color: #fff;
   border-radius: 9999px;
-  width: 200px;
+  width: 100px;
   padding: 8px 24px;
   text-decoration: none;
   align-items: center;
@@ -29,28 +29,34 @@
   min-height: 48px;
   transition: 0.3s;
   font-family: MaisonNeue, Helvetica, sans-serif;
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 400;
   line-height: 1;
   margin: 10px;
 }
 
 .fav-video-list {
-  background-color: rgb(239, 239, 239);
-  padding: 150px;
+  background-color: rgb(251, 249, 248);
+  padding: 50px;
+  padding-left: auto;
   width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+ 
+  
 }
 
 .favorites-videos-div {
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  padding: 100px;
+  background-color: rgb(22,41,52);
+  padding-left: 100px;
+  align-items: center;
+  
 }
 
 .favorites-cards {
-  background: rgb(31, 31, 31);
+  background: rgb(42,56,68);
   max-width: 330px;
   margin-bottom: 1rem;
   padding: 15px;
@@ -59,9 +65,7 @@
   margin: 25px;
 }
 
-.favorites-wrap {
 
-}
 .fav-vid-image {
   width: 200px;
   height: 100px;
@@ -69,8 +73,8 @@
 }
 
 .unlike-btn {
-  background-color: #cb7428;
-  color: #fff;
+  background-color: rgb(247,230,221);
+  color: black;
   border-radius: 10px;
   border: 2px solid transparent;
   margin: 5px;
@@ -91,17 +95,20 @@ form {
   justify-content: flex-start;
   border-radius: 10px;
   border:none;
+  
 }
 
 fieldset {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 300px;
 }
 
 .text-area {
-  height: 200px;
+  height: 100px;
+  width: 800px;
   border-radius: 5px;
+
 }
 
 input{
@@ -115,15 +122,18 @@ input{
   border-radius: 20px;
 }
 
-iframe{
-  display:flex;
+.iframe-div{
+  align-items:center;
 }
 
 .liked-videos{
-  font-size: 60px;
-  padding: 10px;
-  margin: 10px;
-  color: rgb(28,28,28);
+  font-size: 36px;
+  margin:0;
+  padding: 30px;
+  color: white;
+  background-color: rgb(22,41,52);
+  text-align:center;
+  
 }
 
 .user-name-welcome{
@@ -135,4 +145,81 @@ iframe{
   font-size: 20px;
   color:rgb(28,28,28);
   
+}
+
+.post-wrapper{
+  background-color: rgb(251,249,248);
+  /* max-width:400px; */
+  height: 330px;
+  overflow: scroll;
+  width: 900px;
+  margin-top:0px;
+  border: 0;
+  display:flex;
+  flex-direction: row-reverse;
+
+}
+
+.posts-date{
+  color:black;
+}
+
+.posts-question{
+  color:black;
+}
+
+.posts-post{
+  color:black;
+
+}
+
+.post-section{
+  display:flex;
+  padding: 10px;
+  margin-top: 20px;
+  flex-direction: row-reverse;
+ 
+}
+
+.posts-cards{
+  text-align: center;
+    padding: 50px;
+    margin: 20px;
+    list-style-type: none;
+    border-radius: 5px;
+    width: 280px;
+    height: 250px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    overflow-y: scroll; 
+    background-color: rgb(242,238,234); 
+    color:#656565;
+    font-family: "metropolis-regular", sans-serif
+}
+
+.fav-cards-wrapper{
+  display: inline-block;
+  flex-direction:row;
+}
+
+.form-cards{
+  display: inline-block;
+}
+
+.day-note-section{
+  height: 400px;
+}
+
+#add-journal-entry{
+  width: 100%;
+}
+
+iframe{
+  width: 1000px;
+  height: 500px;
+  background-color:rgb(22,41,52);
+  padding: 20px;
+  margin-top: 20px;
 }

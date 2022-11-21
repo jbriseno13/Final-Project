@@ -17,7 +17,7 @@ const VideoItem = ({ searchQuery, isFavorite, onUpdate }) => { //use video inste
     setCurrVid(videoItems.items[0].id.videoId);
   };
 
-  const favoritevid = async (videoId) => {
+  const favoritevid = async (videoId,title,thumbnails) => {
     console.log("favorite vid");
     const response = await fetch(`/favorites`, {
       method: "POST",
@@ -26,7 +26,7 @@ const VideoItem = ({ searchQuery, isFavorite, onUpdate }) => { //use video inste
         "Content-Type": "application/json",
       },
 
-      body: JSON.stringify({ user: user.sub, videoId}),
+      body: JSON.stringify({ user: user.sub, videoId, title, thumbnails }),
     });
 
     const content = await response.json();
@@ -89,7 +89,7 @@ const VideoItem = ({ searchQuery, isFavorite, onUpdate }) => { //use video inste
 
                 <button
                   className="fav-btn"
-                  onClick={() => favoritevid(video.id.videoId)}
+                  onClick={() => favoritevid(video.id.videoId,video.snippet.title, video.snippet.thumbnails.medium.url)}
                 >
                   {" "}
                   {isFavorite ? "Dislike" : "Like"}
