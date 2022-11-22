@@ -19,8 +19,22 @@ CREATE TABLE public.users (
     sub text
 );
 
+CREATE TABLE public.landingpagecontent (
+    id integer NOT NULL,
+    description text,
+    details text,
+    image text
+);
 
 
+CREATE TABLE public.books (
+    id integer NOT NULL,
+    title text,
+    author text,
+    description text,
+    website text,
+    image text
+);
 
 INSERT INTO public.resourcesnumbers (id, image, name, phone, website, note) OVERRIDING SYSTEM VALUE VALUES (2, 'https://adelbkorkorfoundation.org/wp-content/uploads/2021/06/ok2text-300x97.jpg', 'OK2Talk Helpline Teen Helpline', '1 (800) 273-TALK', 'https://ok2talk.org/', NULL);
 INSERT INTO public.resourcesnumbers (id, image, name, phone, website, note) OVERRIDING SYSTEM VALUE VALUES (3, 'https://adelbkorkorfoundation.org/wp-content/uploads/2022/07/988-logo-296x300.png', '988 Suicide & Crisis Lifeline', '988', 'https://988lifeline.org/chat/', NULL);
