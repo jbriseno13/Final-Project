@@ -85,7 +85,7 @@ const Form = () => {
       <form className="day-note-section" onSubmit= {(e) => handleSubmit(e)}>
         <div id="form-card">
           <fieldset>
-          <div calssName="form-section">
+          <div className="form-section">
             <label>Today's Date</label>
             <input
               type="date"

@@ -29,7 +29,7 @@ const PrivateNavBar = ({ setHomeView }) => {
         className="nav-link"
         activeClassName="router-link-exact-active"
       >
-        Vidoes
+        Videos
       </NavLink>
       <NavLink
         to="/resources"

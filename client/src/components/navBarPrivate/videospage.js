@@ -4,22 +4,25 @@ import NavBar from "../navbar";
 // import PrivateNavBar from "./navbarprivate";
 
 const searchButtons = [
-  "Anxiety",
+  "Overcoming Anxiety",
   "Depression",
-  "Imposter_Syndrome",
+  "Imposter Syndrome",
   "Latinx_Therapy",
-  "Cultural_Stigmas",
+  "Cultural Stigmas",
   "Love_Languages",
-  "Improve_Communication",
+  "Improve Communication",
   "LGBTQIA",
   "Family_Dynamics",
-  "Red_Flags",
-  "Work_Life_Balance",
+  "Mindfulness",
+  "Recognizing Toxic Behavior",
+  "Work Life Balance",
   "Affirmations",
   "Overcoming_Trauma",
-  "Mindfulness",
   "Healthy_Friendships",
   "Mental_Health",
+  "Tedx_Latino", 
+  "Cinema Therapy", 
+  "Mended Light"
 ];
 
 const VideosPage = ( {onUpdate}) => {
@@ -49,11 +52,11 @@ const VideosPage = ( {onUpdate}) => {
     <div className="main-video" id="videos">
       <div className="main-video-spacer"></div>
       <div className="main__video__content">
-        <h1>Choose A Topic!</h1>
-        <h2>Watch videos and learn more about these topics.</h2>
+        <h1>Which topic would you like to learn more about today?</h1>
+        <h2>Choose A Topic!</h2>
         <p>
           {" "}
-          Videos Topics <br></br>
+          Select Topic: <br></br>
         </p>
         {searchButtons.map((button, ind) => {
           return (

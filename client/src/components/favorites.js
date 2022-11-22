@@ -93,7 +93,9 @@ const Favorite = () => {
                   onClick={() => setCurrFavVid(item.video_id)}
                 >
                   <img className="fav-vid-image" src={item.thumbnails} />
+                  <br></br>
                   {item.title}
+                  
                   <button
                     className="unlike-btn"
                     onClick={() => handleDeleteFavVid(item.video_id)}
