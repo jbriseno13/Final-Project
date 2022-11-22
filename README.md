@@ -23,6 +23,10 @@
 ## APIs
 
 #### Auth0
+<div> 
+<img src="https://user-images.githubusercontent.com/104550107/203438135-6a986fee-dec6-4f85-9d0d-f615f1357379.png" title="Auth0" alt="Auth0" width=:100 height="100"/>
+
+</div>
 #### Youtube
 #### Motivational Quotes
 
