@@ -1,6 +1,6 @@
 # TERA
 
-### TERA is an application for users that are interested in learning more about mental health topics and tracking their daily emotions. The application provides a series of youtube videos about different mental health topics and allows the user to create a journal to write about their day.
+### TERA is an application for users that are interested in learning more about mental health topics and tracking their daily emotions. The application provides a series of youtube videos about different mental health topics and allows the user to create a journal about their day.
 
 ## TechStack
 #### Languages, tools, and other:
@@ -23,6 +23,20 @@
 ### Wireframe
 ### Database Model
 
-#### Heading 4
+## Installation
 
-Plain Text
+### Node
+ Use a Node version manger to install Node.js and npm. 
+ 
+### Install
+#### 1. Clone the Repo using the following url: 
+#### 2. Install NPM packages using the following command in the root directory:
+<code> npm install </code>
+#### 3. Database setup:
+###### a. Copy the example environment file
+<code> cp.env.example .env </code>
+###### b. Run the following to setup the database: 
+<code>npm run db:init</code>
+
+
+<code></code>
