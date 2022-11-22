@@ -5,14 +5,13 @@
 ### TERA is an application for users that are interested in learning more about mental health topics and tracking their daily emotions. The application provides a series of youtube videos about different mental health topics and allows the user to create a journal about their day.
 
 ## TechStack
-#### Languages, tools, and other:
-#### postgrSQL
-#### Render
+#### Languages and tools:
+
 
 <div>
  
   <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg" title="React" alt="React" width="100" height="100"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/css/css3-plain-wordmark.svg"  title="CSS3" alt="CSS" width="100" height="100"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original-wordmark.svg"  title="CSS3" alt="CSS" width="100" height="100"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="100" height="100"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="100" height="100"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original-wordmark.svg" title="NodeJS" alt="NodeJS" width="100" height="100"/>&nbsp;
