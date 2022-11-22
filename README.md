@@ -22,6 +22,7 @@
 
 ## Drawing Board
 ### Wireframe
+![Screen Shot 2022-11-22 at 2 10 59 PM (2)](https://user-images.githubusercontent.com/104550107/203431779-486fb9d6-9b8f-4048-87ae-86e5ab1d5764.png)
 ### Database Model
 
 ## Installation
