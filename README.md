@@ -15,6 +15,10 @@
 
 ## APIs
 
+#### Auth0
+#### Youtube
+#### Motivational Quotes
+
 ## Drawing Board
 ### Wireframe
 ### Database Model
