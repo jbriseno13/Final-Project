@@ -16,23 +16,24 @@
 }
 
 .add-form-btn {
-  background-color: #cb7428;
-  color: #fff;
+  background-color: rgba(204,105,46);
+  color: white;
   border-radius: 9999px;
-  width: 100px;
-  padding: 8px 24px;
+  width: 50%;
+  padding: 8 20px;
   text-decoration: none;
   align-items: center;
   justify-content: center;
   gap: 8px;
   display: flex;
-  min-height: 48px;
+  min-height: 30px;
   transition: 0.3s;
   font-family: MaisonNeue, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 1;
-  margin: 10px;
+  margin-top: 20px;
+  
 }
 
 .fav-video-list {
@@ -51,15 +52,14 @@
 .favorites-videos-div {
   background-color: rgb(22,41,52);
   padding-left: 100px;
-  align-items: center;
+  align-content: center;
   
 }
 
 .favorites-cards {
-  background: rgb(42,56,68);
+  background: transparent;
   max-width: 330px;
   margin-bottom: 1rem;
-  padding: 15px;
   display: flex;
   flex-direction: column;
   margin: 25px;
@@ -68,8 +68,9 @@
 
 .fav-vid-image {
   width: 200px;
-  height: 100px;
-  padding: 5px;
+  width:100%;
+  height: 200px;
+  border-radius: 10px;
 }
 
 .unlike-btn {
@@ -77,9 +78,10 @@
   color: black;
   border-radius: 10px;
   border: 2px solid transparent;
-  margin: 5px;
+  margin-top: 10px;
   padding: 0;
   font-family: MaisonNeue, Helvetica, sans-serif;
+  width: 100px;
 }
 
 footer {
@@ -88,13 +90,18 @@ footer {
 }
 
 form {
-  margin: 20px;
+  margin: auto;
+  margin-left: 30px;
   background-color: rgb(31, 45, 44);
   padding: 30px;
+  padding-bottom: 20px;
+  height: 600px;
   max-height: 100%;
   justify-content: flex-start;
   border-radius: 10px;
   border:none;
+  
+
   
 }
 
@@ -102,6 +109,7 @@ fieldset {
   display: flex;
   flex-direction: column;
   width: 300px;
+  height: 300px;
 }
 
 .text-area {
@@ -223,4 +231,13 @@ iframe{
   background-color:rgb(22,41,52);
   padding: 20px;
   margin-top: 20px;
+}
+
+.form-section{
+  display:flex;
+  flex-direction: column;
+}
+
+.fav-vid-list{
+  align-content:center;
 }

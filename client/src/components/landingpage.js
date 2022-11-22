@@ -8,11 +8,14 @@ import { useEffect, useState } from "react";
 const LandingPage = () => {
   const [landingpagecontent, setLandingpagecontent] = useState([]);
 
-
   const getLandingpagecontent = async () => {
-    const response = await fetch("/api/landing");
-    const landingpagecontent = await response.json();
-    setLandingpagecontent(landingpagecontent);
+    try {
+      const response = await fetch("/api/landing");
+      const landingpagecontent = await response.json();
+      setLandingpagecontent(landingpagecontent);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -21,10 +24,10 @@ const LandingPage = () => {
 
   return (
     <div className="landing-page-welcome">
-        <div className="hero-landing">
-      <h1 className="landing-h1">
-        TERA <br></br> (te·rə)<br></br>Your mental health 
-      </h1>
+      <div className="hero-landing">
+        <h1 className="landing-h1">
+          TERA <br></br> (te·rə)<br></br>Your mental health
+        </h1>
       </div>
       <h2 className="landing-h2">How does it Work?</h2>
       <ul className="landing-cards-area">
