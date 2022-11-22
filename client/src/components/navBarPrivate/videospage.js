@@ -4,7 +4,7 @@ import NavBar from "../navbar";
 // import PrivateNavBar from "./navbarprivate";
 
 const searchButtons = [
-  "Overcoming Anxiety",
+  "Anxiety",
   "Depression",
   "Imposter Syndrome",
   "Latinx_Therapy",

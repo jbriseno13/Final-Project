@@ -26,7 +26,7 @@ const LandingPage = () => {
     <div className="landing-page-welcome">
       <div className="hero-landing">
         <h1 className="landing-h1">
-          TERA <br></br> (te·rə)<br></br>Your mental health
+          TERA <br></br> (te·rə)<br></br>Your mental health matters
         </h1>
       </div>
       <h2 className="landing-h2">How does it Work?</h2>

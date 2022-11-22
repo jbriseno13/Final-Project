@@ -95,7 +95,8 @@ function App() {
               <div className="hero__container">
                 <h1 className="hero__heading">TERA</h1>
                 <p className="hero__description">
-                  Break toxic behavior and improve your relationships
+                  Learn about mental health and track your daily emotions.
+                  
                 </p>
                 <button className="main__btn">
                   <a href="#">Explore</a>
