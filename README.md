@@ -38,5 +38,8 @@
 ###### b. Run the following to setup the database: 
 <code>npm run db:init</code>
 
-
-<code></code>
+## Testing
+#### Jest Testing 
+Running tests in the terminal: 
+#### In client run the following command: 
+<code>npm test</code>
