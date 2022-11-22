@@ -22,20 +22,16 @@
 
 ## APIs
 
-#### Auth0
+
 <div> 
 <img src="https://user-images.githubusercontent.com/104550107/203438135-6a986fee-dec6-4f85-9d0d-f615f1357379.png" title="Auth0" alt="Auth0" width="80" height="80"/>
  
-<img src="https://user-images.githubusercontent.com/104550107/203439637-4ab409f1-1c11-47d6-be5f-f45c2bf7fe49.png" title="Youtube" alt="Youtube" width="80" height="70"/>
+<img src="https://user-images.githubusercontent.com/104550107/203439637-4ab409f1-1c11-47d6-be5f-f45c2bf7fe49.png" title="Youtube" alt="Youtube" width="80" height="80"/>
 
-<img src="https://user-images.githubusercontent.com/104550107/203439649-55e923a0-d70b-43f2-ae74-c8274abc117d.png" title="Motivational Quotes" alt="Motivational Quotes" width="80" height="80"
+<img src="https://user-images.githubusercontent.com/104550107/203439649-55e923a0-d70b-43f2-ae74-c8274abc117d.png" title="Motivational Quotes" alt="Motivational Quotes" width="80" height="80"/>
  
- 
- 
-
 </div>
-#### Youtube
-#### Motivational Quotes
+
 
 ## Drawing Board
 ### Wireframe
