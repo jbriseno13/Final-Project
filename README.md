@@ -24,6 +24,7 @@
 ### Wireframe
 ![Screen Shot 2022-11-22 at 2 10 59 PM (2)](https://user-images.githubusercontent.com/104550107/203431779-486fb9d6-9b8f-4048-87ae-86e5ab1d5764.png)
 ### Database Model
+![Screen Shot 2022-11-22 at 2 17 34 PM (2)](https://user-images.githubusercontent.com/104550107/203432753-5910e344-67b5-4362-94c0-d683b65f3aeb.png)
 
 ## Installation
 
