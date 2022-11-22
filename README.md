@@ -1,6 +1,7 @@
 # TERA
+<div align="center">
 ![Screen Shot 2022-11-22 at 2 00 38 PM (2)](https://user-images.githubusercontent.com/104550107/203430379-4da62b9b-e67d-4aec-b7a7-1a45fd5839c6.png)
-
+</div>
 ### TERA is an application for users that are interested in learning more about mental health topics and tracking their daily emotions. The application provides a series of youtube videos about different mental health topics and allows the user to create a journal about their day.
 
 ## TechStack
