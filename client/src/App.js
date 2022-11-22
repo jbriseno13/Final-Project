@@ -127,12 +127,12 @@ function App() {
                 </div>
                 <div className="main__content">
                   <h1>Welcome to TERA!</h1>
-                  <h2>Watch videos and learn more about mental health.</h2>
+                  <h2>Mental Health can be challenging, learning about it shouldn't be.</h2>
                   <p>
                     {" "}
-                    TERA is an application meant to help improve your <br></br>{" "}
-                    relationship with yourself and those around you. Break the{" "}
-                    <br></br>toxic cycles in your behavior. .
+                    TERA is an application meant to help you learn  <br></br>{" "}
+                    about various mental health topics and log your daily emotions{" "}
+                    <br></br>
                   </p>
                   <button className="main__btn">
                     <a href="#">Read More</a>
